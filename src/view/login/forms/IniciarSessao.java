@@ -42,7 +42,7 @@ public class IniciarSessao extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        lblEsqueceuPassword = new javax.swing.JLabel();
+        btnEsqueceuPassword = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         tbnIniciarSessaao = new com.k33ptoo.components.KButton();
@@ -54,10 +54,15 @@ public class IniciarSessao extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblEsqueceuPassword.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        lblEsqueceuPassword.setForeground(new java.awt.Color(153, 153, 153));
-        lblEsqueceuPassword.setText("Esqueceu a password?");
-        lblEsqueceuPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEsqueceuPassword.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        btnEsqueceuPassword.setForeground(new java.awt.Color(153, 153, 153));
+        btnEsqueceuPassword.setText("Esqueceu a password?");
+        btnEsqueceuPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEsqueceuPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEsqueceuPasswordMouseClicked(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
         jLabel1.setText("Bem Vindo!");
@@ -67,11 +72,11 @@ public class IniciarSessao extends javax.swing.JPanel {
         jLabel3.setText("Inicie a sessão na sua conta");
 
         tbnIniciarSessaao.setText("Iniciar a Sessão");
-        tbnIniciarSessaao.setkEndColor(new java.awt.Color(0, 0, 0));
+        tbnIniciarSessaao.setkEndColor(new java.awt.Color(44, 44, 57));
         tbnIniciarSessaao.setkHoverEndColor(new java.awt.Color(51, 51, 51));
         tbnIniciarSessaao.setkHoverForeGround(new java.awt.Color(255, 255, 255));
         tbnIniciarSessaao.setkHoverStartColor(new java.awt.Color(51, 51, 51));
-        tbnIniciarSessaao.setkStartColor(new java.awt.Color(0, 0, 0));
+        tbnIniciarSessaao.setkStartColor(new java.awt.Color(44, 44, 57));
         tbnIniciarSessaao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tbnIniciarSessaaoActionPerformed(evt);
@@ -115,7 +120,7 @@ public class IniciarSessao extends javax.swing.JPanel {
                                 .addGap(30, 30, 30))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(94, 94, 94)
-                        .addComponent(lblEsqueceuPassword)))
+                        .addComponent(btnEsqueceuPassword)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
@@ -143,7 +148,7 @@ public class IniciarSessao extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tbnIniciarSessaao, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblEsqueceuPassword)
+                .addComponent(btnEsqueceuPassword)
                 .addGap(72, 72, 72))
         );
 
@@ -177,13 +182,19 @@ public class IniciarSessao extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
 
+    private void btnEsqueceuPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEsqueceuPasswordMouseClicked
+        // TODO add your handling code here:
+        ResetPasswordForm resetPasswodForm = new ResetPasswordForm(loginForm, true);
+        resetPasswodForm.setVisible(true);
+    }//GEN-LAST:event_btnEsqueceuPasswordMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnEsqueceuPassword;
     private javax.swing.JCheckBox ckLembrarPassword;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblEsqueceuPassword;
     private com.k33ptoo.components.KButton tbnIniciarSessaao;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JPasswordField txtPassWord;

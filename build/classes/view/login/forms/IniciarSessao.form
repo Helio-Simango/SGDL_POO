@@ -63,7 +63,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
-                          <Component id="lblEsqueceuPassword" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnEsqueceuPassword" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -98,14 +98,14 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="tbnIniciarSessaao" min="-2" pref="33" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="lblEsqueceuPassword" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnEsqueceuPassword" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblEsqueceuPassword">
+        <Component class="javax.swing.JLabel" name="btnEsqueceuPassword">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI Emoji" size="12" style="0"/>
@@ -118,6 +118,9 @@
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnEsqueceuPasswordMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
@@ -142,7 +145,7 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Iniciar a Sess&#xe3;o"/>
             <Property name="kEndColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
+              <Color blue="39" green="2c" red="2c" type="rgb"/>
             </Property>
             <Property name="kHoverEndColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -154,7 +157,7 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="kStartColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
+              <Color blue="39" green="2c" red="2c" type="rgb"/>
             </Property>
           </Properties>
           <Events>
