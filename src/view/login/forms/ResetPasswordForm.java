@@ -13,14 +13,37 @@ import javax.swing.JPanel;
  */
 public class ResetPasswordForm extends javax.swing.JDialog {
 
+    private String EmailCodigoString = " Introduz o seu Email";
     /**
      * Creates new form ResetPasswordForm
      */
     public ResetPasswordForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+       //Inicialização de componentes, definindo a regra de negocio
+        ckLembrarPassword.setEnabled(false);   // O metedo desabilita o componete
+        txtNewPassWord.setEchoChar((char) 0);
+        txtConfirmarNewPassWord.setEchoChar((char) 0);
+        txtEmailCodigo.setText(EmailCodigoString);
     }
     
+    /**
+     *  Metdo cleanFields faz a limpeza dos campos
+     *  introduzindo uma string vazia no determinado campo
+     */
+    public void cleanFields(){
+        txtEmailCodigo.setText("");
+        txtCodigoVerificacao.setText("");
+        txtNewPassWord.setText("");
+        txtConfirmarNewPassWord.setText("");
+    }
+    
+    /**
+     *  Mostra o Painel recebido por parametro no frame
+     *  usando o cardlayout.
+     * @param panel 
+     */
     public void showPanel(JPanel jpanel){
         containerPanel.removeAll();
         containerPanel.repaint();
@@ -49,10 +72,10 @@ public class ResetPasswordForm extends javax.swing.JDialog {
         btnCodigoVerificacao = new com.k33ptoo.components.KButton();
         resetPasswordPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        txtPassWord = new javax.swing.JPasswordField();
-        txtConfirmarPassWord3 = new javax.swing.JPasswordField();
+        txtNewPassWord = new javax.swing.JPasswordField();
+        txtConfirmarNewPassWord = new javax.swing.JPasswordField();
         ckLembrarPassword = new javax.swing.JCheckBox();
-        txtEmail2 = new javax.swing.JTextField();
+        txtCodigoVerificacao = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         tbnIniciarSessaao2 = new com.k33ptoo.components.KButton();
 
@@ -107,8 +130,16 @@ public class ResetPasswordForm extends javax.swing.JDialog {
         });
 
         txtEmailCodigo.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        txtEmailCodigo.setText("  Introduz o email");
+        txtEmailCodigo.setForeground(new java.awt.Color(102, 102, 102));
         txtEmailCodigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+        txtEmailCodigo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtEmailCodigoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtEmailCodigoMouseExited(evt);
+            }
+        });
         txtEmailCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailCodigoActionPerformed(evt);
@@ -177,26 +208,34 @@ public class ResetPasswordForm extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
         jLabel2.setText("Detalhes do usuario");
 
-        txtPassWord.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        txtPassWord.setText(" introduz a password");
-        txtPassWord.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+        txtNewPassWord.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        txtNewPassWord.setForeground(new java.awt.Color(102, 102, 102));
+        txtNewPassWord.setText(" introduz a password");
+        txtNewPassWord.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
 
-        txtConfirmarPassWord3.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        txtConfirmarPassWord3.setText(" Confirma a sua password");
-        txtConfirmarPassWord3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
-        txtConfirmarPassWord3.addActionListener(new java.awt.event.ActionListener() {
+        txtConfirmarNewPassWord.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        txtConfirmarNewPassWord.setForeground(new java.awt.Color(102, 102, 102));
+        txtConfirmarNewPassWord.setText(" Confirma a sua password");
+        txtConfirmarNewPassWord.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+        txtConfirmarNewPassWord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtConfirmarPassWord3ActionPerformed(evt);
+                txtConfirmarNewPassWordActionPerformed(evt);
             }
         });
 
         ckLembrarPassword.setForeground(new java.awt.Color(153, 153, 153));
         ckLembrarPassword.setText("Lembrar a Password");
         ckLembrarPassword.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        ckLembrarPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckLembrarPasswordActionPerformed(evt);
+            }
+        });
 
-        txtEmail2.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        txtEmail2.setText("codigo de verificação");
-        txtEmail2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+        txtCodigoVerificacao.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        txtCodigoVerificacao.setForeground(new java.awt.Color(102, 102, 102));
+        txtCodigoVerificacao.setText("codigo de verificação");
+        txtCodigoVerificacao.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
@@ -225,12 +264,12 @@ public class ResetPasswordForm extends javax.swing.JDialog {
                         .addGroup(resetPasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(ckLembrarPassword)
-                            .addComponent(txtPassWord, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEmail2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNewPassWord, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCodigoVerificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(86, Short.MAX_VALUE))
                     .addGroup(resetPasswordPanelLayout.createSequentialGroup()
                         .addGroup(resetPasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtConfirmarPassWord3)
+                            .addComponent(txtConfirmarNewPassWord)
                             .addComponent(tbnIniciarSessaao2, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(resetPasswordPanelLayout.createSequentialGroup()
@@ -246,11 +285,11 @@ public class ResetPasswordForm extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addGap(25, 25, 25)
-                .addComponent(txtEmail2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCodigoVerificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPassWord, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNewPassWord, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
-                .addComponent(txtConfirmarPassWord3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtConfirmarNewPassWord, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ckLembrarPassword)
                 .addGap(18, 18, 18)
@@ -305,9 +344,9 @@ public class ResetPasswordForm extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCodigoVerificacaoActionPerformed
 
-    private void txtConfirmarPassWord3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmarPassWord3ActionPerformed
+    private void txtConfirmarNewPassWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmarNewPassWordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtConfirmarPassWord3ActionPerformed
+    }//GEN-LAST:event_txtConfirmarNewPassWordActionPerformed
 
     private void tbnIniciarSessaao2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbnIniciarSessaao2ActionPerformed
         // TODO add your handling code here:
@@ -326,6 +365,42 @@ public class ResetPasswordForm extends javax.swing.JDialog {
             this.dispose();
         }
     }//GEN-LAST:event_btnCancelarMouseClicked
+
+    private void ckLembrarPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckLembrarPasswordActionPerformed
+        // O metedo isSelected verifica se o checkbox foi selecionado ou não
+        
+        // Verificar se o checkbox foi selecionado, 
+        // se tiver sido selecionado mostrar a senha caso não ocultar
+        if(ckLembrarPassword.isSelected()){
+            txtNewPassWord.setEchoChar((char) 0);
+            txtConfirmarNewPassWord.setEchoChar((char) 0);
+        }else{
+            txtNewPassWord.setEchoChar('*');
+            txtConfirmarNewPassWord.setEchoChar('*');
+        }
+    }//GEN-LAST:event_ckLembrarPasswordActionPerformed
+
+    private void txtEmailCodigoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailCodigoMouseEntered
+        // TODO add your handling code here:
+
+        System.out.println(""+ txtEmailCodigo.getText().equals(EmailCodigoString));
+        if(txtEmailCodigo.getText().equals(EmailCodigoString)){
+            cleanFields();
+            System.out.println("O text é Introduz o email' então limpa o campo! ");  
+            // Mais logica a ser implementada
+        }else{
+           System.out.println("Agora o texto é diferente!! ");
+           // Mais logica a ser implementada
+        }
+    }//GEN-LAST:event_txtEmailCodigoMouseEntered
+
+    private void txtEmailCodigoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailCodigoMouseExited
+        // Verificar se o campo esta vazio, se estiver 
+        // setar a string 'Introduz o seu Email'
+        if(txtEmailCodigo.getText().equals("")){
+            txtEmailCodigo.setText(EmailCodigoString);
+        }
+    }//GEN-LAST:event_txtEmailCodigoMouseExited
 
     /**
      * @param args the command line arguments
@@ -384,9 +459,9 @@ public class ResetPasswordForm extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel resetPasswordPanel;
     private com.k33ptoo.components.KButton tbnIniciarSessaao2;
-    private javax.swing.JPasswordField txtConfirmarPassWord3;
-    private javax.swing.JTextField txtEmail2;
+    private javax.swing.JTextField txtCodigoVerificacao;
+    private javax.swing.JPasswordField txtConfirmarNewPassWord;
     private javax.swing.JTextField txtEmailCodigo;
-    private javax.swing.JPasswordField txtPassWord;
+    private javax.swing.JPasswordField txtNewPassWord;
     // End of variables declaration//GEN-END:variables
 }
