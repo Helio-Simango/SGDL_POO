@@ -8,21 +8,33 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author helio
+ * @author helio Simango
  */
 public class LoginForm extends javax.swing.JFrame {
 
+    private final String passwordString = " Introduz a palavra-passe";
+    private final String emailString = " Introduz o email";
+    private final String confirmPasswordString = " Confirma a sua palavra-passe";
+    
     /**
      * Creates new form Main
      */
     public LoginForm() {
         initComponents();
-        
-        showPanel(new IniciarSessao());
-        lblIniciarSessão.setVisible(false);
-        lblTensConta.setVisible(false);
+        setTextFeilds();
+        txtPassWord1.setEchoChar((char) 0);
     }
-
+    
+   private void setTextFeilds(){
+       // IniciarSessaoPanel
+        txtEmailLogin.setText(emailString);
+        txtPassWordLogin.setText(passwordString);
+        
+        //CriarContaPanel
+        txtEmail1.setText(emailString);
+        txtPassWord1.setText(passwordString);
+        txtConfirmarPassWord.setText(confirmPasswordString);
+    }
     /**
      *  Mostra o Painel recebido por parametro no frame
      *  usando o cardlayout.
@@ -40,7 +52,9 @@ public class LoginForm extends javax.swing.JFrame {
     /  De modo a chamar o Panel CriarConta no LoginFom
     */
     public void MetedoExecutadoEmOutroForm(){
-        showPanel(new CriarConta());
+        //showPanel(new CriarConta());
+        System.out.println("cheguei ffff");
+        this.dispose();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,13 +67,32 @@ public class LoginForm extends javax.swing.JFrame {
 
         backgraundPanel = new javax.swing.JPanel();
         containerPanel = new javax.swing.JPanel();
-        cardalayoutPanel = new javax.swing.JPanel();
-        rigthRoundedPanel = new view.extras.PanelRound();
-        jPanel1 = new javax.swing.JPanel();
-        lblCriaConta = new javax.swing.JLabel();
+        IniciarSessaoPanel = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        btnEsqueceuPassword = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        tbnIniciarSessaao = new com.k33ptoo.components.KButton();
+        txtPassWordLogin = new javax.swing.JPasswordField();
+        txtEmailLogin = new javax.swing.JTextField();
+        ckLembrarPassword = new javax.swing.JCheckBox();
         lblUmaConta = new javax.swing.JLabel();
-        lblIniciarSessão = new javax.swing.JLabel();
+        lblCriaConta = new javax.swing.JLabel();
+        CriarContaPanel = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        lblEsqueceuPassword = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        btnContinuar = new com.k33ptoo.components.KButton();
+        txtPassWord1 = new javax.swing.JPasswordField();
+        txtEmail1 = new javax.swing.JTextField();
+        txtConfirmarPassWord = new javax.swing.JPasswordField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        ckLembrarPassword1 = new javax.swing.JCheckBox();
         lblTensConta = new javax.swing.JLabel();
+        lblIniciarSessão = new javax.swing.JLabel();
+        rigthRoundedPanel = new view.extras.PanelRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -70,20 +103,380 @@ public class LoginForm extends javax.swing.JFrame {
         containerPanel.setBackground(new java.awt.Color(255, 255, 255));
         containerPanel.setLayout(new java.awt.CardLayout());
 
-        cardalayoutPanel.setBackground(new java.awt.Color(255, 255, 255));
+        IniciarSessaoPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout cardalayoutPanelLayout = new javax.swing.GroupLayout(cardalayoutPanel);
-        cardalayoutPanel.setLayout(cardalayoutPanelLayout);
-        cardalayoutPanelLayout.setHorizontalGroup(
-            cardalayoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 527, Short.MAX_VALUE)
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnEsqueceuPassword.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        btnEsqueceuPassword.setForeground(new java.awt.Color(153, 153, 153));
+        btnEsqueceuPassword.setText("Esqueceu a password?");
+        btnEsqueceuPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEsqueceuPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEsqueceuPasswordMouseClicked(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
+        jLabel1.setText("Bem Vindo!");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel3.setText("Inicie a sessão na sua conta");
+
+        tbnIniciarSessaao.setText("Iniciar a Sessão");
+        tbnIniciarSessaao.setkEndColor(new java.awt.Color(44, 44, 57));
+        tbnIniciarSessaao.setkHoverEndColor(new java.awt.Color(51, 51, 51));
+        tbnIniciarSessaao.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        tbnIniciarSessaao.setkHoverStartColor(new java.awt.Color(51, 51, 51));
+        tbnIniciarSessaao.setkStartColor(new java.awt.Color(44, 44, 57));
+        tbnIniciarSessaao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbnIniciarSessaaoActionPerformed(evt);
+            }
+        });
+
+        txtPassWordLogin.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        txtPassWordLogin.setForeground(new java.awt.Color(102, 102, 102));
+        txtPassWordLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+        txtPassWordLogin.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtPassWordLoginCaretUpdate(evt);
+            }
+        });
+        txtPassWordLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtPassWordLoginMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtPassWordLoginMouseExited(evt);
+            }
+        });
+        txtPassWordLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPassWordLoginActionPerformed(evt);
+            }
+        });
+
+        txtEmailLogin.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        txtEmailLogin.setForeground(new java.awt.Color(102, 102, 102));
+        txtEmailLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+        txtEmailLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtEmailLoginMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtEmailLoginMouseExited(evt);
+            }
+        });
+        txtEmailLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailLoginActionPerformed(evt);
+            }
+        });
+
+        ckLembrarPassword.setForeground(new java.awt.Color(153, 153, 153));
+        ckLembrarPassword.setText("Lembrar a Password");
+        ckLembrarPassword.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        ckLembrarPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckLembrarPasswordActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(30, 30, 30)))
+                .addGap(90, 90, 90))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ckLembrarPassword)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(tbnIniciarSessaao, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                                .addComponent(txtPassWordLogin))
+                            .addComponent(txtEmailLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(btnEsqueceuPassword)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
-        cardalayoutPanelLayout.setVerticalGroup(
-            cardalayoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 519, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addGap(63, 63, 63)
+                .addComponent(txtEmailLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtPassWordLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(ckLembrarPassword)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tbnIniciarSessaao, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEsqueceuPassword)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
-        containerPanel.add(cardalayoutPanel, "card2");
+        lblUmaConta.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        lblUmaConta.setForeground(new java.awt.Color(153, 153, 153));
+        lblUmaConta.setText("Não tens uma conta?");
+
+        lblCriaConta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblCriaConta.setForeground(new java.awt.Color(0, 153, 255));
+        lblCriaConta.setText("Crie uma Conta!");
+        lblCriaConta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblCriaConta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCriaContaMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout IniciarSessaoPanelLayout = new javax.swing.GroupLayout(IniciarSessaoPanel);
+        IniciarSessaoPanel.setLayout(IniciarSessaoPanelLayout);
+        IniciarSessaoPanelLayout.setHorizontalGroup(
+            IniciarSessaoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(IniciarSessaoPanelLayout.createSequentialGroup()
+                .addGroup(IniciarSessaoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(IniciarSessaoPanelLayout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(IniciarSessaoPanelLayout.createSequentialGroup()
+                        .addGap(155, 155, 155)
+                        .addComponent(lblUmaConta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCriaConta, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(100, Short.MAX_VALUE))
+        );
+        IniciarSessaoPanelLayout.setVerticalGroup(
+            IniciarSessaoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(IniciarSessaoPanelLayout.createSequentialGroup()
+                .addGap(121, 121, 121)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addGroup(IniciarSessaoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCriaConta)
+                    .addComponent(lblUmaConta))
+                .addContainerGap(91, Short.MAX_VALUE))
+        );
+
+        containerPanel.add(IniciarSessaoPanel, "card2");
+
+        CriarContaPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblEsqueceuPassword.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        lblEsqueceuPassword.setForeground(new java.awt.Color(153, 153, 153));
+        lblEsqueceuPassword.setText("Ao me inscrever, li e concordo com os");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
+        jLabel2.setText("Criar Conta");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Emoji", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel4.setText("Termos");
+
+        btnContinuar.setText("continuar");
+        btnContinuar.setkEndColor(new java.awt.Color(44, 44, 57));
+        btnContinuar.setkHoverEndColor(new java.awt.Color(51, 51, 51));
+        btnContinuar.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnContinuar.setkHoverStartColor(new java.awt.Color(51, 51, 51));
+        btnContinuar.setkStartColor(new java.awt.Color(44, 44, 57));
+        btnContinuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContinuarActionPerformed(evt);
+            }
+        });
+
+        txtPassWord1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        txtPassWord1.setForeground(new java.awt.Color(102, 102, 102));
+        txtPassWord1.setToolTipText("");
+        txtPassWord1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+        txtPassWord1.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtPassWord1CaretUpdate(evt);
+            }
+        });
+        txtPassWord1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtPassWord1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtPassWord1MouseExited(evt);
+            }
+        });
+
+        txtEmail1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        txtEmail1.setForeground(new java.awt.Color(102, 102, 102));
+        txtEmail1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+        txtEmail1.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtEmail1CaretUpdate(evt);
+            }
+        });
+        txtEmail1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtEmail1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtEmail1MouseExited(evt);
+            }
+        });
+
+        txtConfirmarPassWord.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        txtConfirmarPassWord.setForeground(new java.awt.Color(102, 102, 102));
+        txtConfirmarPassWord.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+        txtConfirmarPassWord.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtConfirmarPassWordCaretUpdate(evt);
+            }
+        });
+        txtConfirmarPassWord.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtConfirmarPassWordMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtConfirmarPassWordMouseExited(evt);
+            }
+        });
+        txtConfirmarPassWord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtConfirmarPassWordActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel5.setText("e a");
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI Emoji", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel6.setText("Política de Privacidade");
+
+        ckLembrarPassword1.setForeground(new java.awt.Color(153, 153, 153));
+        ckLembrarPassword1.setText("Lembrar a Password");
+        ckLembrarPassword1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        ckLembrarPassword1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckLembrarPassword1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(33, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(126, 126, 126))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(txtConfirmarPassWord, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ckLembrarPassword1)
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(txtPassWord1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(31, 31, 31))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6))
+                            .addComponent(lblEsqueceuPassword))
+                        .addGap(66, 66, 66))))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel2)
+                .addGap(41, 41, 41)
+                .addComponent(txtEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtPassWord1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtConfirmarPassWord, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(ckLembrarPassword1)
+                .addGap(18, 18, 18)
+                .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblEsqueceuPassword)
+                .addGap(8, 8, 8)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        lblTensConta.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        lblTensConta.setForeground(new java.awt.Color(153, 153, 153));
+        lblTensConta.setText("Já tens uma conta?");
+
+        lblIniciarSessão.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblIniciarSessão.setForeground(new java.awt.Color(0, 153, 255));
+        lblIniciarSessão.setText("Inicie a sessão!");
+        lblIniciarSessão.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIniciarSessãoMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout CriarContaPanelLayout = new javax.swing.GroupLayout(CriarContaPanel);
+        CriarContaPanel.setLayout(CriarContaPanelLayout);
+        CriarContaPanelLayout.setHorizontalGroup(
+            CriarContaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CriarContaPanelLayout.createSequentialGroup()
+                .addGap(162, 162, 162)
+                .addComponent(lblTensConta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblIniciarSessão)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CriarContaPanelLayout.createSequentialGroup()
+                .addContainerGap(95, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(94, 94, 94))
+        );
+        CriarContaPanelLayout.setVerticalGroup(
+            CriarContaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CriarContaPanelLayout.createSequentialGroup()
+                .addGap(117, 117, 117)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addGroup(CriarContaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTensConta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblIniciarSessão, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(85, 85, 85))
+        );
+
+        containerPanel.add(CriarContaPanel, "card3");
 
         rigthRoundedPanel.setBackground(new java.awt.Color(229, 85, 85));
         rigthRoundedPanel.setRoundBottomLeft(60);
@@ -102,76 +495,13 @@ public class LoginForm extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        lblCriaConta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblCriaConta.setForeground(new java.awt.Color(0, 153, 255));
-        lblCriaConta.setText("Crie uma Conta!");
-        lblCriaConta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblCriaConta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblCriaContaMouseClicked(evt);
-            }
-        });
-
-        lblUmaConta.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        lblUmaConta.setForeground(new java.awt.Color(153, 153, 153));
-        lblUmaConta.setText("Não tens uma conta?");
-
-        lblIniciarSessão.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblIniciarSessão.setForeground(new java.awt.Color(0, 153, 255));
-        lblIniciarSessão.setText("Inicie a sessão!");
-        lblIniciarSessão.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblIniciarSessãoMouseClicked(evt);
-            }
-        });
-
-        lblTensConta.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        lblTensConta.setForeground(new java.awt.Color(153, 153, 153));
-        lblTensConta.setText("Já tens uma conta?");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblTensConta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblIniciarSessão))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblUmaConta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblCriaConta)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUmaConta)
-                    .addComponent(lblCriaConta))
-                .addGap(0, 0, 0)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTensConta)
-                    .addComponent(lblIniciarSessão))
-                .addContainerGap(95, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout backgraundPanelLayout = new javax.swing.GroupLayout(backgraundPanel);
         backgraundPanel.setLayout(backgraundPanelLayout);
         backgraundPanelLayout.setHorizontalGroup(
             backgraundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgraundPanelLayout.createSequentialGroup()
-                .addGroup(backgraundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rigthRoundedPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -181,10 +511,7 @@ public class LoginForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(rigthRoundedPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(backgraundPanelLayout.createSequentialGroup()
-                .addComponent(containerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -202,38 +529,225 @@ public class LoginForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblCriaContaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCriaContaMouseClicked
+    private void btnEsqueceuPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEsqueceuPasswordMouseClicked
+        // TODO add your handling code here:
+        ResetPasswordForm resetPasswodForm = new ResetPasswordForm(this, true);
+        resetPasswodForm.setVisible(true);
+    }//GEN-LAST:event_btnEsqueceuPasswordMouseClicked
+
+    private void tbnIniciarSessaaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbnIniciarSessaaoActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_tbnIniciarSessaaoActionPerformed
+
+    private void txtPassWordLoginCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtPassWordLoginCaretUpdate
         // TODO add your handling code here:
         
-        // Ao se acioanar o metedo primeiro vamos desativar os componentes
-        // que pertencem a tela IniciaSessao, activar os componentes que
-        // pertencem a tela criarConta e chamar a mesma tela.
-        lblCriaConta.setVisible(false); // desativar a label
-        lblUmaConta.setVisible(false); // desativar a label
-        
+        String stringVazia = " ";
+        stringVazia = stringVazia.trim();  // O metedo trim() serve para Revomover todos os espaços vazios
+        String outraString = txtPassWordLogin.getText().trim(); // Remover todos espeços vazios da string digitada
+        if(!(txtPassWordLogin.getText().equals(passwordString) || stringVazia.equals(outraString))){
+            txtPassWordLogin.setEchoChar('*');
+            System.out.println("cheguei cheguei!!!!!!");
+        }else{
+            txtPassWordLogin.setEchoChar((char) 0);
+        }
+    }//GEN-LAST:event_txtPassWordLoginCaretUpdate
+
+    private void txtPassWordLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPassWordLoginMouseEntered
+        // TODO add your handling code here:
+        if(txtPassWordLogin.getText().equals(passwordString)){
+            txtPassWordLogin.setText("");
+        }
+    }//GEN-LAST:event_txtPassWordLoginMouseEntered
+
+    private void txtPassWordLoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPassWordLoginMouseExited
+        // TODO add your handling code here:
+        if(txtPassWordLogin.getText().equals("")){
+            txtPassWordLogin.setText(passwordString);
+        }
+    }//GEN-LAST:event_txtPassWordLoginMouseExited
+
+    private void txtPassWordLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassWordLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPassWordLoginActionPerformed
+
+    private void txtEmailLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailLoginMouseEntered
+        // TODO add your handling code here:
+        if(txtEmailLogin.getText().equals(emailString)){
+            txtEmailLogin.setText("");
+        }
+    }//GEN-LAST:event_txtEmailLoginMouseEntered
+
+    private void txtEmailLoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailLoginMouseExited
+        // TODO add your handling code here:
+        if(txtEmailLogin.getText().equals("")){
+            txtEmailLogin.setText(emailString);
+        }
+    }//GEN-LAST:event_txtEmailLoginMouseExited
+
+    private void txtEmailLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailLoginActionPerformed
+
+    private void ckLembrarPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckLembrarPasswordActionPerformed
+
+        // O metedo isSelected verifica se o checkbox foi selecionado ou não
+        // Verificar se o checkbox foi selecionado,
+        // se tiver sido selecionado mostrar a senha caso não ocultar
+        if(ckLembrarPassword.isSelected()){
+            // se nao for igual a string passwordString
+            if(!txtPassWordLogin.getText().equals(passwordString)){
+                txtPassWordLogin.setEchoChar((char)0);
+            }
+
+        }else{
+            // Se checkbox nao estiver selecionada executar o seguinte
+            System.out.println(" A checkbox nao foi selecionada!!");
+
+            // campo txtConfirmarNewPassword verificar se tem um
+            // texto ou nao dentro da textfeild
+            if(txtPassWordLogin.getText().equals(passwordString)){
+                txtPassWordLogin.setEchoChar((char) 0);
+            }else{
+                txtPassWordLogin.setEchoChar('*');
+            }
+
+        }
+    }//GEN-LAST:event_ckLembrarPasswordActionPerformed
+
+    private void lblCriaContaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCriaContaMouseClicked
+        // TODO add your handling code here:
         //Chama o Painel CriarConta
-        showPanel(new CriarConta());
-        lblIniciarSessão.setVisible(true);
-        lblTensConta.setVisible(true);
+        showPanel(CriarContaPanel);      
     }//GEN-LAST:event_lblCriaContaMouseClicked
+
+    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnContinuarActionPerformed
+
+    private void txtPassWord1CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtPassWord1CaretUpdate
+        // TODO add your handling code here:
+        String stringVazia = " ";
+        stringVazia = stringVazia.trim();  // O metedo trim() serve para Revomover todos os espaços vazios
+        String outraString = txtPassWord1.getText().trim(); // Remover todos espeços vazios da string digitada
+        if(!(txtPassWord1.getText().equals(passwordString) || stringVazia.equals(outraString))){
+            txtPassWord1.setEchoChar('*');
+            System.out.println("cheguei cheguei!!!!!!");
+        }else{
+            txtPassWord1.setEchoChar((char) 0);
+        }
+    }//GEN-LAST:event_txtPassWord1CaretUpdate
+
+    private void txtPassWord1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPassWord1MouseEntered
+        // TODO add your handling code here:  
+        if(txtPassWord1.getText().equals(passwordString)){
+            txtPassWord1.setText("");
+        }
+    }//GEN-LAST:event_txtPassWord1MouseEntered
+
+    private void txtPassWord1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPassWord1MouseExited
+        // TODO add your handling code here:
+        if(txtPassWord1.getText().equals("")){
+            txtPassWord1.setText(passwordString);
+        }
+    }//GEN-LAST:event_txtPassWord1MouseExited
+
+    private void txtEmail1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmail1MouseEntered
+        // TODO add your handling code here:
+        if(txtEmail1.getText().equals(emailString)){
+            txtEmail1.setText("");
+        }
+    }//GEN-LAST:event_txtEmail1MouseEntered
+
+    private void txtEmail1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmail1MouseExited
+        // TODO add your handling code here:
+        if(txtEmail1.getText().equals("")){
+            txtEmail1.setText(emailString);
+        }
+    }//GEN-LAST:event_txtEmail1MouseExited
+
+    private void txtConfirmarPassWordCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtConfirmarPassWordCaretUpdate
+        // TODO add your handling code here:
+        String stringVazia = " ";
+        stringVazia = stringVazia.trim();  // O metedo trim() serve para Revomover todos os espaços vazios
+        String outraString = txtConfirmarPassWord.getText().trim(); // Remover todos espeços vazios da string digitada
+        if(!(txtConfirmarPassWord.getText().equals(confirmPasswordString) || stringVazia.equals(outraString))){
+            txtConfirmarPassWord.setEchoChar('*');
+            System.out.println("cheguei cheguei!!!!!!");
+        }else{
+            txtConfirmarPassWord.setEchoChar((char) 0);
+        }
+    }//GEN-LAST:event_txtConfirmarPassWordCaretUpdate
+
+    private void txtConfirmarPassWordMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtConfirmarPassWordMouseEntered
+        // TODO add your handling code here:
+        if(txtConfirmarPassWord.getText().equals(confirmPasswordString)){
+            txtConfirmarPassWord.setText("");
+        }
+    }//GEN-LAST:event_txtConfirmarPassWordMouseEntered
+
+    private void txtConfirmarPassWordMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtConfirmarPassWordMouseExited
+        // TODO add your handling code here:
+        if(txtConfirmarPassWord.getText().equals("")){
+            txtConfirmarPassWord.setText(confirmPasswordString);
+        }
+    }//GEN-LAST:event_txtConfirmarPassWordMouseExited
+
+    private void txtConfirmarPassWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmarPassWordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtConfirmarPassWordActionPerformed
+
+    private void ckLembrarPassword1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckLembrarPassword1ActionPerformed
+        // TODO add your handling code here:
+        if(ckLembrarPassword.isSelected()){
+            System.out.println("A checkbox foi selecionada!!");
+            // campo de senha do painel Iniciar a sessao
+            if(!txtPassWordLogin.getText().equals(passwordString)){
+                txtPassWordLogin.setEchoChar((char)0);
+            }
+            // campo de senha do painel Criar conta
+            if(!txtConfirmarPassWord.getText().equals(confirmPasswordString)){
+                txtConfirmarPassWord.setEchoChar((char)0);
+            }
+            if(!txtPassWord1.getText().equals(passwordString)){
+                txtPassWord1.setEchoChar((char) 0);
+            }
+            
+        }else{
+            // Se checkbox nao estiver selecionada executar o seguinte
+            System.out.println(" A checkbox nao foi selecionada!!");
+            //
+            if(txtPassWordLogin.getText().equals(passwordString)){
+                txtPassWordLogin.setEchoChar((char) 0);
+            }else{
+                txtPassWordLogin.setEchoChar('*');
+            }
+            // campo txtConfirmarNewPassword verificar se tem um
+            // texto ou nao dentro da textfeild
+            if(txtPassWord1.getText().equals(passwordString)){
+                txtPassWord1.setEchoChar((char) 0);
+            } else{
+                txtPassWord1.setEchoChar('*');
+            }
+            
+            if(txtConfirmarPassWord.getText().equals(confirmPasswordString)){
+                txtConfirmarPassWord.setEchoChar((char) 0);
+            }else{
+                txtConfirmarPassWord.setEchoChar('*');
+            }
+        }
+    }//GEN-LAST:event_ckLembrarPassword1ActionPerformed
 
     private void lblIniciarSessãoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIniciarSessãoMouseClicked
         // TODO add your handling code here:
-          
-        // Ao se acioanar o metedo primeiro vamos desativar os componentes
-        // que pertencem a tela CriarConta, activar os componentes que
-        // pertencem a tela Iniciaressao e chamar a mesma tela.
-       
-        lblIniciarSessão.setVisible(false);// desativar a label
-        lblTensConta.setVisible(false); // desativar a label
-        
         // Chama o painei IniciarSessao
-        showPanel(new IniciarSessao());
-        lblCriaConta.setVisible(true); 
-        lblUmaConta.setVisible(true); 
-        
-        
+        showPanel(IniciarSessaoPanel);
     }//GEN-LAST:event_lblIniciarSessãoMouseClicked
+
+    private void txtEmail1CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtEmail1CaretUpdate
+
+    }//GEN-LAST:event_txtEmail1CaretUpdate
 
     /**
      * @param args the command line arguments
@@ -272,15 +786,34 @@ public class LoginForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel CriarContaPanel;
+    private javax.swing.JPanel IniciarSessaoPanel;
     private javax.swing.JPanel backgraundPanel;
-    private javax.swing.JPanel cardalayoutPanel;
+    private com.k33ptoo.components.KButton btnContinuar;
+    private javax.swing.JLabel btnEsqueceuPassword;
+    private javax.swing.JCheckBox ckLembrarPassword;
+    private javax.swing.JCheckBox ckLembrarPassword1;
     private javax.swing.JPanel containerPanel;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblCriaConta;
+    private javax.swing.JLabel lblEsqueceuPassword;
     private javax.swing.JLabel lblIniciarSessão;
     private javax.swing.JLabel lblTensConta;
     private javax.swing.JLabel lblUmaConta;
     private view.extras.PanelRound rigthRoundedPanel;
+    private com.k33ptoo.components.KButton tbnIniciarSessaao;
+    private javax.swing.JPasswordField txtConfirmarPassWord;
+    private javax.swing.JTextField txtEmail1;
+    private javax.swing.JTextField txtEmailLogin;
+    private javax.swing.JPasswordField txtPassWord1;
+    private javax.swing.JPasswordField txtPassWordLogin;
     // End of variables declaration//GEN-END:variables
 
 }

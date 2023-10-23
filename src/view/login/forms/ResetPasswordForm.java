@@ -1,5 +1,6 @@
 package view.login.forms;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /*
@@ -13,7 +14,10 @@ import javax.swing.JPanel;
  */
 public class ResetPasswordForm extends javax.swing.JDialog {
 
-    private String EmailCodigoString = " Introduz o seu Email";
+    private final String emailCodigoString = " Introduz o seu Email";
+    private final String CodigoVerificacaoString = " Codigo de Verificação";
+    private final String  novaSenha= " Nova password";
+    private final String confirmNovaSenha = " Confirmanar nova senha";
     /**
      * Creates new form ResetPasswordForm
      */
@@ -22,17 +26,17 @@ public class ResetPasswordForm extends javax.swing.JDialog {
         initComponents();
         
        //Inicialização de componentes, definindo a regra de negocio
-        ckLembrarPassword.setEnabled(false);   // O metedo desabilita o componete
+        //ckLembrarPassword.setEnabled(false);   // O metedo desabilita o componete
         txtNewPassWord.setEchoChar((char) 0);
         txtConfirmarNewPassWord.setEchoChar((char) 0);
-        txtEmailCodigo.setText(EmailCodigoString);
+        txtEmailCodigo.setText(emailCodigoString);
     }
     
     /**
      *  Metdo cleanFields faz a limpeza dos campos
      *  introduzindo uma string vazia no determinado campo
      */
-    public void cleanFields(){
+    private void cleanFields(){
         txtEmailCodigo.setText("");
         txtCodigoVerificacao.setText("");
         txtNewPassWord.setText("");
@@ -40,11 +44,21 @@ public class ResetPasswordForm extends javax.swing.JDialog {
     }
     
     /**
+     *  Metedo para preencher os campos 
+     *  no painel resetPasswordPanel
+     */
+    private void setTextOnResetPassword(){
+        txtCodigoVerificacao.setText(CodigoVerificacaoString);
+        txtNewPassWord.setText(novaSenha);
+        txtConfirmarNewPassWord.setText(confirmNovaSenha);
+    }
+    
+    /**
      *  Mostra o Painel recebido por parametro no frame
      *  usando o cardlayout.
      * @param panel 
      */
-    public void showPanel(JPanel jpanel){
+    private void showPanel(JPanel jpanel){
         containerPanel.removeAll();
         containerPanel.repaint();
         containerPanel.revalidate();
@@ -210,13 +224,37 @@ public class ResetPasswordForm extends javax.swing.JDialog {
 
         txtNewPassWord.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
         txtNewPassWord.setForeground(new java.awt.Color(102, 102, 102));
-        txtNewPassWord.setText(" introduz a password");
         txtNewPassWord.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+        txtNewPassWord.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtNewPassWordCaretUpdate(evt);
+            }
+        });
+        txtNewPassWord.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtNewPassWordMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtNewPassWordMouseExited(evt);
+            }
+        });
 
         txtConfirmarNewPassWord.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
         txtConfirmarNewPassWord.setForeground(new java.awt.Color(102, 102, 102));
-        txtConfirmarNewPassWord.setText(" Confirma a sua password");
         txtConfirmarNewPassWord.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+        txtConfirmarNewPassWord.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtConfirmarNewPassWordCaretUpdate(evt);
+            }
+        });
+        txtConfirmarNewPassWord.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtConfirmarNewPassWordMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtConfirmarNewPassWordMouseExited(evt);
+            }
+        });
         txtConfirmarNewPassWord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtConfirmarNewPassWordActionPerformed(evt);
@@ -234,8 +272,15 @@ public class ResetPasswordForm extends javax.swing.JDialog {
 
         txtCodigoVerificacao.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
         txtCodigoVerificacao.setForeground(new java.awt.Color(102, 102, 102));
-        txtCodigoVerificacao.setText("codigo de verificação");
         txtCodigoVerificacao.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+        txtCodigoVerificacao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtCodigoVerificacaoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtCodigoVerificacaoMouseExited(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
@@ -286,9 +331,9 @@ public class ResetPasswordForm extends javax.swing.JDialog {
                 .addComponent(jLabel4)
                 .addGap(25, 25, 25)
                 .addComponent(txtCodigoVerificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtNewPassWord, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
+                .addGap(10, 10, 10)
                 .addComponent(txtConfirmarNewPassWord, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ckLembrarPassword)
@@ -330,10 +375,22 @@ public class ResetPasswordForm extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnContinuarCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarCodigoActionPerformed
-        // TODO add your handling code here:
         
-        // Chamar o painel para fazer o reset da password!
-        showPanel(resetPasswordPanel);
+        String stringVazia = " ";
+        stringVazia = stringVazia.trim();  // O metedo trim() serve para Revomover todos os espaços vazios
+        String outraString = txtEmailCodigo.getText().trim(); // Remover todos espeços vazios da string digitada
+        
+        // verificação do campo EmailCodigo, se 
+        if(txtEmailCodigo.getText().equals(emailCodigoString) || stringVazia.equals(outraString)){
+                 
+            JOptionPane.showMessageDialog(this, "Introduza o email a Recuperar senha!");
+            System.out.println(" Introduz um email a Recuperar Senha!! ");
+        }else{
+            // Fazer a Validação do email e depois
+            // Chamar o painel para fazer o reset da password!
+            setTextOnResetPassword();
+            showPanel(resetPasswordPanel);
+        }      
     }//GEN-LAST:event_btnContinuarCodigoActionPerformed
 
     private void txtEmailCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailCodigoActionPerformed
@@ -368,24 +425,45 @@ public class ResetPasswordForm extends javax.swing.JDialog {
 
     private void ckLembrarPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckLembrarPasswordActionPerformed
         // O metedo isSelected verifica se o checkbox foi selecionado ou não
-        
         // Verificar se o checkbox foi selecionado, 
         // se tiver sido selecionado mostrar a senha caso não ocultar
         if(ckLembrarPassword.isSelected()){
-            txtNewPassWord.setEchoChar((char) 0);
-            txtConfirmarNewPassWord.setEchoChar((char) 0);
+            if(!txtNewPassWord.getText().equals(novaSenha)){
+                txtNewPassWord.setEchoChar((char)0);
+            } 
+            if(!txtConfirmarNewPassWord.getText().equals(confirmNovaSenha)){
+                txtConfirmarNewPassWord.setEchoChar((char)0);
+            }
+            //txtNewPassWord.setEchoChar((char) 0);
+            //txtConfirmarNewPassWord.setEchoChar((char) 0);
         }else{
-            txtNewPassWord.setEchoChar('*');
-            txtConfirmarNewPassWord.setEchoChar('*');
+            // Se checkbox nao estiver selecionada executar o seguinte
+            System.out.println(" A checkbox nao foi selecionada!!");      
+            //
+            if(txtNewPassWord.getText().equals(novaSenha)){
+                txtNewPassWord.setEchoChar((char) 0);
+            }else{
+                txtNewPassWord.setEchoChar('*');
+            }
+            // campo txtConfirmarNewPassword verificar se tem um
+            // texto ou nao dentro da textfeild
+            if(txtConfirmarNewPassWord.getText().equals(confirmNovaSenha)){
+                txtConfirmarNewPassWord.setEchoChar((char) 0);
+            }else{
+                txtConfirmarNewPassWord.setEchoChar('*');
+            }
+            
         }
     }//GEN-LAST:event_ckLembrarPasswordActionPerformed
 
     private void txtEmailCodigoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailCodigoMouseEntered
         // TODO add your handling code here:
 
-        System.out.println(""+ txtEmailCodigo.getText().equals(EmailCodigoString));
-        if(txtEmailCodigo.getText().equals(EmailCodigoString)){
-            cleanFields();
+        System.out.println(""+ txtEmailCodigo.getText().equals(emailCodigoString));
+        // se as duas Strings comparadas for verdadeira
+        // limpa-se o campo de texto
+        if(txtEmailCodigo.getText().equals(emailCodigoString)){
+            txtEmailCodigo.setText(""); //limpar o campo!!
             System.out.println("O text é Introduz o email' então limpa o campo! ");  
             // Mais logica a ser implementada
         }else{
@@ -398,9 +476,102 @@ public class ResetPasswordForm extends javax.swing.JDialog {
         // Verificar se o campo esta vazio, se estiver 
         // setar a string 'Introduz o seu Email'
         if(txtEmailCodigo.getText().equals("")){
-            txtEmailCodigo.setText(EmailCodigoString);
+            txtEmailCodigo.setText(emailCodigoString);
         }
     }//GEN-LAST:event_txtEmailCodigoMouseExited
+
+    private void txtCodigoVerificacaoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCodigoVerificacaoMouseEntered
+        // TODO add your handling code here:
+        // se as duas Strings comparadas for verdadeira
+        // limpa-se o campo de texto
+        if(txtCodigoVerificacao.getText().equals(CodigoVerificacaoString)){
+            
+            txtCodigoVerificacao.setText(""); //limpar o campo!!
+            System.out.println("O text é Codigo Verificacao' então limpa o campo! ");  
+            // Mais logica a ser implementada
+        }else{
+           System.out.println("Agora o texto é diferente!! ");
+           // Mais logica a ser implementada
+        }
+    }//GEN-LAST:event_txtCodigoVerificacaoMouseEntered
+
+    private void txtCodigoVerificacaoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCodigoVerificacaoMouseExited
+        // TODO add your handling code here:
+        if(txtCodigoVerificacao.getText().equals("")){
+            txtCodigoVerificacao.setText(CodigoVerificacaoString);
+        }
+    }//GEN-LAST:event_txtCodigoVerificacaoMouseExited
+
+    private void txtNewPassWordMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNewPassWordMouseEntered
+        // TODO add your handling code here:
+        // se as duas Strings comparadas for verdadeira
+        // limpa-se o campo de texto
+        if(txtNewPassWord.getText().equals(novaSenha)){
+            
+             txtNewPassWord.setText(""); //limpar o campo!!
+            System.out.println("O text é nova senha' então limpa o campo! ");  
+            // Mais logica a ser implementada
+        }else{
+           System.out.println("Agora o texto é diferente!! ");
+           // Mais logica a ser implementada
+        }
+    }//GEN-LAST:event_txtNewPassWordMouseEntered
+
+    private void txtNewPassWordMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNewPassWordMouseExited
+        // TODO add your handling code here:
+        if(txtNewPassWord.getText().equals("")){
+            txtNewPassWord.setText(novaSenha);
+        }
+    }//GEN-LAST:event_txtNewPassWordMouseExited
+
+    private void txtConfirmarNewPassWordMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtConfirmarNewPassWordMouseEntered
+        // TODO add your handling code here:
+        if(txtConfirmarNewPassWord.getText().equals(confirmNovaSenha)){
+            
+            txtConfirmarNewPassWord.setText(""); //limpar o campo!!
+            System.out.println("O text é confirmar senha' então limpa o campo! ");  
+            // Mais logica a ser implementada
+        }else{
+           System.out.println("Agora o texto é diferente!! ");
+           //txtConfirmarNewPassWord.setEchoChar('*');
+           //ckLembrarPassword.setEnabled(true);
+           // Mais logica a ser implementada
+        }
+    }//GEN-LAST:event_txtConfirmarNewPassWordMouseEntered
+
+    private void txtConfirmarNewPassWordMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtConfirmarNewPassWordMouseExited
+        // TODO add your handling code here:
+        if(txtConfirmarNewPassWord.getText().equals("")){
+            txtConfirmarNewPassWord.setText(confirmNovaSenha);
+        }
+    }//GEN-LAST:event_txtConfirmarNewPassWordMouseExited
+
+    private void txtNewPassWordCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtNewPassWordCaretUpdate
+        // TODO add your handling code here:
+        String stringVazia = " ";
+        stringVazia = stringVazia.trim();  // O metedo trim() serve para Revomover todos os espaços vazios
+        String outraString = txtNewPassWord.getText().trim(); // Remover todos espeços vazios da string digitada
+        if(!(txtNewPassWord.getText().equals(novaSenha) || stringVazia.equals(outraString))){
+            txtNewPassWord.setEchoChar('*');
+            System.out.println("cheguei cheguei!!!!!!");
+        }else{   
+            txtNewPassWord.setEchoChar((char) 0);
+        }
+    }//GEN-LAST:event_txtNewPassWordCaretUpdate
+
+    private void txtConfirmarNewPassWordCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtConfirmarNewPassWordCaretUpdate
+        // TODO add your handling code here:
+        String stringVazia = " ";
+        stringVazia = stringVazia.trim();  // O metedo trim() serve para Revomover todos os espaços vazios
+        String outraString = txtConfirmarNewPassWord.getText().trim(); // Remover todos espeços vazios da string digitada
+        if( !(txtConfirmarNewPassWord.getText().equals(confirmNovaSenha) || stringVazia.equals(outraString))){
+            txtConfirmarNewPassWord.setEchoChar('*');
+            System.out.println("cheguei cheguei!!!!!!");
+        }else{
+            
+            txtConfirmarNewPassWord.setEchoChar((char) 0);
+        }
+    }//GEN-LAST:event_txtConfirmarNewPassWordCaretUpdate
 
     /**
      * @param args the command line arguments
