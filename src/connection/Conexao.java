@@ -11,15 +11,7 @@ import javax.persistence.Persistence;
  *
  * @author helio
  */
-public class ConnectionFactory {
-    
-    /** metedo "static" pode ser "chamado" sem a necessidade
-     * de instanciar a classe.
-     *
-       @return 
-     * O metedo returna EntityManagerFactory para poder 
-     * Atribuir as Classses controller e depois gravar os dados
-    */
+public class Conexao {
     public static  EntityManagerFactory getEmf(){
        return Persistence.createEntityManagerFactory("SGDL_POOPU");
     }

@@ -4,13 +4,18 @@
  */
 package view.login.forms;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JPanel;
+import view.admin.DashboardAdmin;
 
 /**
  *
  * @author helio Simango
  */
-public class LoginForm extends javax.swing.JFrame {
+public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseListener{
 
     private final String passwordString = " Introduz a palavra-passe";
     private final String emailString = " Introduz o email";
@@ -23,6 +28,7 @@ public class LoginForm extends javax.swing.JFrame {
         initComponents();
         setTextFeilds();
         txtPassWord1.setEchoChar((char) 0);
+        System.out.println(" "+ txtEmailLogin.hasFocus());
     }
     
    private void setTextFeilds(){
@@ -537,7 +543,11 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void tbnIniciarSessaaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbnIniciarSessaaoActionPerformed
         // TODO add your handling code here:
-       
+        
+        // Mais Logic a ser implementada!!
+        this.dispose();
+        DashboardAdmin dashboardAmin = new DashboardAdmin();
+        dashboardAmin.setVisible(true);
     }//GEN-LAST:event_tbnIniciarSessaaoActionPerformed
 
     private void txtPassWordLoginCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtPassWordLoginCaretUpdate
@@ -576,6 +586,7 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(txtEmailLogin.getText().equals(emailString)){
             txtEmailLogin.setText("");
+            
         }
     }//GEN-LAST:event_txtEmailLoginMouseEntered
 
@@ -779,6 +790,7 @@ public class LoginForm extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new LoginForm().setVisible(true);
             }
@@ -815,5 +827,42 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtPassWord1;
     private javax.swing.JPasswordField txtPassWordLogin;
     // End of variables declaration//GEN-END:variables
+
+    // Metedos Da interface KeyListner
+    @Override
+    public void keyTyped(KeyEvent e) {  
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
+
+    
+
+    
+    // Metedos Da Interface MouseListner
+    @Override
+    public void mouseClicked(MouseEvent e) {
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+    }
 
 }

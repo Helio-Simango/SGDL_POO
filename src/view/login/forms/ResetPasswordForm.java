@@ -1,18 +1,20 @@
 package view.login.forms;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 
 /**
  *
  * @author helio
  */
-public class ResetPasswordForm extends javax.swing.JDialog {
+public class ResetPasswordForm extends javax.swing.JDialog implements KeyListener, MouseListener{
 
     private final String emailCodigoString = " Introduz o seu Email";
     private final String CodigoVerificacaoString = " Codigo de Verificação";
@@ -24,14 +26,26 @@ public class ResetPasswordForm extends javax.swing.JDialog {
     public ResetPasswordForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
-       //Inicialização de componentes, definindo a regra de negocio
+        init();
+    }
+    
+    /**
+     *  Inicializar os compontes,e definir a regra de negocio
+     */
+    private void init(){
+        //Inicialização de componentes, definindo a regra de negocio
         //ckLembrarPassword.setEnabled(false);   // O metedo desabilita o componete
         txtNewPassWord.setEchoChar((char) 0);
         txtConfirmarNewPassWord.setEchoChar((char) 0);
         txtEmailCodigo.setText(emailCodigoString);
+        
+        // Adicionar os eventos aos componentes
+        txtEmailCodigo.addKeyListener(this);
+        txtCodigoVerificacao.addKeyListener(this);
+        txtNewPassWord.addKeyListener(this);
+        txtConfirmarNewPassWord.addKeyListener(this);
+        btnRecuperarSenha.addKeyListener(this);
     }
-    
     /**
      *  Metdo cleanFields faz a limpeza dos campos
      *  introduzindo uma string vazia no determinado campo
@@ -65,6 +79,37 @@ public class ResetPasswordForm extends javax.swing.JDialog {
         containerPanel.add(jpanel);
     }
 
+    
+    private boolean mouseEnteredEvent( JTextField jTextField, String txtString){   
+        if(jTextField.getText().equals(txtString)){  
+            return true;
+        } else{
+            return false;
+        }
+    }
+    
+    private boolean mouseEnteredEvent(JPasswordField jpassWordField, String txtPassWordString){   
+        if(jpassWordField.getText().equals(txtPassWordString)){  
+            return true;
+        } else{
+            return false;
+        }
+    }
+   
+    private boolean mouseExitedEvent(JTextField jtextField){
+        if(jtextField.getText().equals("")){
+            return true;
+        }
+        return false;
+    }
+    
+    private boolean mouseExitedEvent(JPasswordField jPassWordField){
+        if(jPassWordField.getText().equals("")){
+            return true;
+        }
+        return false;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -91,7 +136,7 @@ public class ResetPasswordForm extends javax.swing.JDialog {
         ckLembrarPassword = new javax.swing.JCheckBox();
         txtCodigoVerificacao = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        tbnIniciarSessaao2 = new com.k33ptoo.components.KButton();
+        btnRecuperarSenha = new com.k33ptoo.components.KButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -286,15 +331,15 @@ public class ResetPasswordForm extends javax.swing.JDialog {
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
         jLabel4.setText("Introduza o codigo de verificação enviado por email");
 
-        tbnIniciarSessaao2.setText("Continuar");
-        tbnIniciarSessaao2.setkEndColor(new java.awt.Color(44, 44, 57));
-        tbnIniciarSessaao2.setkHoverEndColor(new java.awt.Color(51, 51, 51));
-        tbnIniciarSessaao2.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        tbnIniciarSessaao2.setkHoverStartColor(new java.awt.Color(68, 146, 70));
-        tbnIniciarSessaao2.setkStartColor(new java.awt.Color(68, 146, 70));
-        tbnIniciarSessaao2.addActionListener(new java.awt.event.ActionListener() {
+        btnRecuperarSenha.setText("Continuar");
+        btnRecuperarSenha.setkEndColor(new java.awt.Color(44, 44, 57));
+        btnRecuperarSenha.setkHoverEndColor(new java.awt.Color(51, 51, 51));
+        btnRecuperarSenha.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnRecuperarSenha.setkHoverStartColor(new java.awt.Color(68, 146, 70));
+        btnRecuperarSenha.setkStartColor(new java.awt.Color(68, 146, 70));
+        btnRecuperarSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tbnIniciarSessaao2ActionPerformed(evt);
+                btnRecuperarSenhaActionPerformed(evt);
             }
         });
 
@@ -315,7 +360,7 @@ public class ResetPasswordForm extends javax.swing.JDialog {
                     .addGroup(resetPasswordPanelLayout.createSequentialGroup()
                         .addGroup(resetPasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtConfirmarNewPassWord)
-                            .addComponent(tbnIniciarSessaao2, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
+                            .addComponent(btnRecuperarSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(resetPasswordPanelLayout.createSequentialGroup()
                 .addGap(137, 137, 137)
@@ -338,7 +383,7 @@ public class ResetPasswordForm extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ckLembrarPassword)
                 .addGap(18, 18, 18)
-                .addComponent(tbnIniciarSessaao2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRecuperarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(124, Short.MAX_VALUE))
         );
 
@@ -378,8 +423,7 @@ public class ResetPasswordForm extends javax.swing.JDialog {
         
         String stringVazia = " ";
         stringVazia = stringVazia.trim();  // O metedo trim() serve para Revomover todos os espaços vazios
-        String outraString = txtEmailCodigo.getText().trim(); // Remover todos espeços vazios da string digitada
-        
+        String outraString = txtEmailCodigo.getText().trim(); // Remover todos espeços vazios da string digitada  
         // verificação do campo EmailCodigo, se 
         if(txtEmailCodigo.getText().equals(emailCodigoString) || stringVazia.equals(outraString)){
                  
@@ -405,13 +449,11 @@ public class ResetPasswordForm extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtConfirmarNewPassWordActionPerformed
 
-    private void tbnIniciarSessaao2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbnIniciarSessaao2ActionPerformed
+    private void btnRecuperarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecuperarSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tbnIniciarSessaao2ActionPerformed
+    }//GEN-LAST:event_btnRecuperarSenhaActionPerformed
 
     private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
-        // TODO add your handling code here:
-        
         // chamar a tela para enviar o codigo de verificação
         // o metedo isDisplayable verifica se o componete ista a ser exibido!!
         if(resetPasswordPanel.isDisplayable()){    
@@ -458,7 +500,8 @@ public class ResetPasswordForm extends javax.swing.JDialog {
 
     private void txtEmailCodigoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailCodigoMouseEntered
         // TODO add your handling code here:
-
+        
+        /*
         System.out.println(""+ txtEmailCodigo.getText().equals(emailCodigoString));
         // se as duas Strings comparadas for verdadeira
         // limpa-se o campo de texto
@@ -470,13 +513,19 @@ public class ResetPasswordForm extends javax.swing.JDialog {
            System.out.println("Agora o texto é diferente!! ");
            // Mais logica a ser implementada
         }
+        */
+        System.out.println(" "+ mouseEnteredEvent(txtEmailCodigo, emailCodigoString));
+        if(mouseEnteredEvent(txtEmailCodigo, emailCodigoString)){
+            txtEmailCodigo.setText("");
+        } 
     }//GEN-LAST:event_txtEmailCodigoMouseEntered
 
+    
     private void txtEmailCodigoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailCodigoMouseExited
         // Verificar se o campo esta vazio, se estiver 
         // setar a string 'Introduz o seu Email'
         if(txtEmailCodigo.getText().equals("")){
-            txtEmailCodigo.setText(emailCodigoString);
+           txtEmailCodigo.setText(emailCodigoString);
         }
     }//GEN-LAST:event_txtEmailCodigoMouseExited
 
@@ -622,6 +671,7 @@ public class ResetPasswordForm extends javax.swing.JDialog {
     private javax.swing.JLabel btnCancelar;
     private com.k33ptoo.components.KButton btnCodigoVerificacao;
     private com.k33ptoo.components.KButton btnContinuarCodigo;
+    private com.k33ptoo.components.KButton btnRecuperarSenha;
     private javax.swing.JCheckBox ckLembrarPassword;
     private javax.swing.JPanel containerPanel;
     private javax.swing.JLabel jLabel1;
@@ -629,10 +679,56 @@ public class ResetPasswordForm extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel resetPasswordPanel;
-    private com.k33ptoo.components.KButton tbnIniciarSessaao2;
     private javax.swing.JTextField txtCodigoVerificacao;
     private javax.swing.JPasswordField txtConfirmarNewPassWord;
     private javax.swing.JTextField txtEmailCodigo;
     private javax.swing.JPasswordField txtNewPassWord;
     // End of variables declaration//GEN-END:variables
+
+    
+    //Implementação dos metedos da interface KeyListener.
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            if(txtCodigoVerificacao.hasFocus()){
+                txtNewPassWord.requestFocus();
+                txtNewPassWord.setText("");
+            } else if(txtNewPassWord.hasFocus()){
+                txtConfirmarNewPassWord.requestFocus();
+                txtConfirmarNewPassWord.setText("");
+            } else if(txtConfirmarNewPassWord.hasFocus()){
+                btnRecuperarSenha.doClick();
+            }
+        }
+        
+    }
+
+    //Implementação dos metedos da interface MouseListener
+    @Override
+    public void mouseClicked(MouseEvent e) {
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+    }
 }

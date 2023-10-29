@@ -34,6 +34,9 @@ public class FuncionarioPanel extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jTextField4 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
         actualizarPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -62,11 +65,13 @@ public class FuncionarioPanel extends javax.swing.JPanel {
 
         cadastrarPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTextField1.setText("jTextField1");
+        jTextField1.setText("Primeiro Nome");
 
-        jTextField2.setText("jTextField2");
+        jTextField2.setText("Apelido");
 
-        jTextField3.setText("jTextField3");
+        jTextField4.setText("Email");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout cadastrarPanelLayout = new javax.swing.GroupLayout(cadastrarPanel);
         cadastrarPanel.setLayout(cadastrarPanelLayout);
@@ -75,21 +80,32 @@ public class FuncionarioPanel extends javax.swing.JPanel {
             .addGroup(cadastrarPanelLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(cadastrarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField4)
                     .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
                     .addComponent(jTextField1)
                     .addComponent(jTextField2))
-                .addContainerGap(528, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addGroup(cadastrarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(321, Short.MAX_VALUE))
         );
         cadastrarPanelLayout.setVerticalGroup(
             cadastrarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cadastrarPanelLayout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(cadastrarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(234, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(cadastrarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(jTextField4))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Cadastrar", cadastrarPanel);
@@ -245,6 +261,8 @@ public class FuncionarioPanel extends javax.swing.JPanel {
     private javax.swing.JPanel actualizarPanel;
     private javax.swing.JPanel cadastrarPanel;
     private view.extras.PanelRound funcionarioBackgraund;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -254,6 +272,7 @@ public class FuncionarioPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JPanel listarPanel;
     private view.extras.PanelRound panelRound7;
     private view.extras.PanelRound panelRound8;
