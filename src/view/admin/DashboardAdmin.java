@@ -125,6 +125,7 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
         jPanel1 = new javax.swing.JPanel();
         jLabel39 = new javax.swing.JLabel();
         panelRound8 = new view.extras.PanelRound();
+        jLabel26 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -882,6 +883,9 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
         lblVerEncomendas.setForeground(new java.awt.Color(104, 175, 80));
         lblVerEncomendas.setText("Ver Encomendas");
         lblVerEncomendas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblVerEncomendasMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblVerEncomendasMouseEntered(evt);
             }
@@ -962,6 +966,9 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
         lblVerClientes.setForeground(new java.awt.Color(104, 175, 80));
         lblVerClientes.setText("Ver Clientes");
         lblVerClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblVerClientesMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblVerClientesMouseEntered(evt);
             }
@@ -986,7 +993,7 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
         panelRound12.setLayout(panelRound12Layout);
         panelRound12Layout.setHorizontalGroup(
             panelRound12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound12Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound12Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                 .addContainerGap())
@@ -1042,6 +1049,9 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
         lblVerVendas.setForeground(new java.awt.Color(104, 175, 80));
         lblVerVendas.setText("Ver Vendas");
         lblVerVendas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblVerVendasMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblVerVendasMouseEntered(evt);
             }
@@ -1198,15 +1208,25 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
         panelRound8.setRoundTopLeft(60);
         panelRound8.setRoundTopRight(60);
 
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(125, 121, 121));
+        jLabel26.setText("Produtos Mais Vendidos");
+
         javax.swing.GroupLayout panelRound8Layout = new javax.swing.GroupLayout(panelRound8);
         panelRound8.setLayout(panelRound8Layout);
         panelRound8Layout.setHorizontalGroup(
             panelRound8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 297, Short.MAX_VALUE)
+            .addGroup(panelRound8Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         panelRound8Layout.setVerticalGroup(
             panelRound8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(panelRound8Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel26)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout dashboardPanelLayout = new javax.swing.GroupLayout(dashboardPanel);
@@ -1489,6 +1509,21 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
         btnProdutos.setBackground(Color.red);
     }//GEN-LAST:event_btnProdutosMousePressed
 
+    private void lblVerClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVerClientesMouseClicked
+        // TODO add your handling code here:
+        showPanel(new ClientesPanel());
+    }//GEN-LAST:event_lblVerClientesMouseClicked
+
+    private void lblVerVendasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVerVendasMouseClicked
+        // TODO add your handling code here:
+        showPanel(new VendasPanel());
+    }//GEN-LAST:event_lblVerVendasMouseClicked
+
+    private void lblVerEncomendasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVerEncomendasMouseClicked
+        // TODO add your handling code here:
+        showPanel(new  EncomendasPanel());
+    }//GEN-LAST:event_lblVerEncomendasMouseClicked
+
     private void cardTotalProdutosMouseEntered(java.awt.event.MouseEvent evt) {                                               
         // TODO add your handling code here:
     }                                                                                      
@@ -1571,6 +1606,7 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
