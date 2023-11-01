@@ -177,11 +177,11 @@ public class ResetPasswordForm extends javax.swing.JDialog implements KeyListene
         VerifictionCodePanel.setBackground(new java.awt.Color(255, 255, 255));
 
         btnContinuarCodigo.setText("Continuar");
-        btnContinuarCodigo.setkEndColor(new java.awt.Color(44, 44, 57));
+        btnContinuarCodigo.setkEndColor(new java.awt.Color(106, 192, 106));
         btnContinuarCodigo.setkHoverEndColor(new java.awt.Color(51, 51, 51));
         btnContinuarCodigo.setkHoverForeGround(new java.awt.Color(255, 255, 255));
         btnContinuarCodigo.setkHoverStartColor(new java.awt.Color(68, 146, 70));
-        btnContinuarCodigo.setkStartColor(new java.awt.Color(68, 146, 70));
+        btnContinuarCodigo.setkStartColor(new java.awt.Color(106, 192, 106));
         btnContinuarCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnContinuarCodigoActionPerformed(evt);
@@ -307,7 +307,7 @@ public class ResetPasswordForm extends javax.swing.JDialog implements KeyListene
         });
 
         ckLembrarPassword.setForeground(new java.awt.Color(153, 153, 153));
-        ckLembrarPassword.setText("Lembrar a Password");
+        ckLembrarPassword.setText("Lembrar a Pass-word");
         ckLembrarPassword.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         ckLembrarPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -332,11 +332,11 @@ public class ResetPasswordForm extends javax.swing.JDialog implements KeyListene
         jLabel4.setText("Introduza o codigo de verificação enviado por email");
 
         btnRecuperarSenha.setText("Continuar");
-        btnRecuperarSenha.setkEndColor(new java.awt.Color(44, 44, 57));
+        btnRecuperarSenha.setkEndColor(new java.awt.Color(106, 192, 106));
         btnRecuperarSenha.setkHoverEndColor(new java.awt.Color(51, 51, 51));
         btnRecuperarSenha.setkHoverForeGround(new java.awt.Color(255, 255, 255));
         btnRecuperarSenha.setkHoverStartColor(new java.awt.Color(68, 146, 70));
-        btnRecuperarSenha.setkStartColor(new java.awt.Color(68, 146, 70));
+        btnRecuperarSenha.setkStartColor(new java.awt.Color(106, 192, 106));
         btnRecuperarSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRecuperarSenhaActionPerformed(evt);

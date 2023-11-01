@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import view.admin.DashboardAdmin;
 
@@ -28,6 +29,7 @@ public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseL
         initComponents();
         setTextFeilds();
         txtPassWord1.setEchoChar((char) 0);
+        setLoginImagen();
         System.out.println(" "+ txtEmailLogin.hasFocus());
     }
     
@@ -61,6 +63,13 @@ public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseL
         //showPanel(new CriarConta());
         System.out.println("cheguei ffff");
         this.dispose();
+    }
+    
+    public void setLoginImagen(){
+        ImageIcon icon = new ImageIcon("src/view/imagens/LoginImage.jpeg");
+        icon.setImage(icon.getImage().getScaledInstance(lblLoginImage.getWidth(), lblLoginImage.getWidth(), 1));
+        lblLoginImage.setIcon(icon);
+       // rigthRoundedPanel.add(lblLoginImage);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -99,6 +108,7 @@ public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseL
         lblTensConta = new javax.swing.JLabel();
         lblIniciarSessão = new javax.swing.JLabel();
         rigthRoundedPanel = new view.extras.PanelRound();
+        lblLoginImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -182,7 +192,7 @@ public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseL
         });
 
         ckLembrarPassword.setForeground(new java.awt.Color(153, 153, 153));
-        ckLembrarPassword.setText("Lembrar a Password");
+        ckLembrarPassword.setText("Lembrar a Pass-word");
         ckLembrarPassword.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         ckLembrarPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -265,7 +275,7 @@ public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseL
                         .addComponent(lblUmaConta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblCriaConta, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         IniciarSessaoPanelLayout.setVerticalGroup(
             IniciarSessaoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -466,7 +476,7 @@ public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseL
                 .addComponent(lblIniciarSessão)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CriarContaPanelLayout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
+                .addContainerGap(86, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(94, 94, 94))
         );
@@ -494,11 +504,13 @@ public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseL
         rigthRoundedPanel.setLayout(rigthRoundedPanelLayout);
         rigthRoundedPanelLayout.setHorizontalGroup(
             rigthRoundedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 516, Short.MAX_VALUE)
+            .addGroup(rigthRoundedPanelLayout.createSequentialGroup()
+                .addComponent(lblLoginImage, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         rigthRoundedPanelLayout.setVerticalGroup(
             rigthRoundedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(lblLoginImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout backgraundPanelLayout = new javax.swing.GroupLayout(backgraundPanel);
@@ -817,6 +829,7 @@ public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseL
     private javax.swing.JLabel lblCriaConta;
     private javax.swing.JLabel lblEsqueceuPassword;
     private javax.swing.JLabel lblIniciarSessão;
+    private javax.swing.JLabel lblLoginImage;
     private javax.swing.JLabel lblTensConta;
     private javax.swing.JLabel lblUmaConta;
     private view.extras.PanelRound rigthRoundedPanel;

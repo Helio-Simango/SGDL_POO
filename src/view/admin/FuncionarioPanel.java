@@ -112,8 +112,12 @@ public class FuncionarioPanel extends javax.swing.JPanel {
         panelRound4.setRoundBottomRight(60);
 
         kButton3.setText("Salvar");
+        kButton3.setkEndColor(new java.awt.Color(106, 192, 106));
+        kButton3.setkStartColor(new java.awt.Color(106, 192, 106));
 
         kButton4.setText("Cancelar");
+        kButton4.setkEndColor(new java.awt.Color(255, 51, 102));
+        kButton4.setkStartColor(new java.awt.Color(255, 51, 102));
 
         jComboBox3.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vendedor", "Cozinheiro", "Faxineiro", "Entregador" }));
@@ -121,7 +125,7 @@ public class FuncionarioPanel extends javax.swing.JPanel {
 
         jComboBox4.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
-        jComboBox4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+        jComboBox4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jComboBox4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox4ActionPerformed(evt);
@@ -129,33 +133,41 @@ public class FuncionarioPanel extends javax.swing.JPanel {
         });
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(153, 153, 153));
         jLabel9.setText("Estado");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(153, 153, 153));
         jLabel10.setText("Função");
 
         jTextField4.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
         jTextField4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(153, 153, 153));
         jLabel11.setText("Bilhete e Identidade");
 
         jTextField5.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
         jTextField5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+        jTextField5.setPreferredSize(new java.awt.Dimension(64, 35));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(153, 153, 153));
         jLabel12.setText("Apelido");
 
         jTextField6.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
         jTextField6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel13.setForeground(new java.awt.Color(153, 153, 153));
         jLabel13.setText("Primeiro Nome");
 
         jDateChooser2.setBackground(new java.awt.Color(255, 255, 255));
+        jDateChooser2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jDateChooser2.setPreferredSize(new java.awt.Dimension(82, 35));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(153, 153, 153));
         jLabel14.setText("Data de Nascimento");
 
         panelRound5.setBackground(new java.awt.Color(102, 102, 102));
@@ -209,6 +221,9 @@ public class FuncionarioPanel extends javax.swing.JPanel {
                 .addGap(21, 21, 21))
         );
 
+        jTextField3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+        jTextField3.setPreferredSize(new java.awt.Dimension(64, 30));
+
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jTextArea1.setTabSize(4);
@@ -216,26 +231,31 @@ public class FuncionarioPanel extends javax.swing.JPanel {
         jTextArea1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
         jScrollPane1.setViewportView(jTextArea1);
 
+        jLabel5.setForeground(new java.awt.Color(153, 153, 153));
         jLabel5.setText("Nuit");
 
+        jLabel6.setForeground(new java.awt.Color(153, 153, 153));
         jLabel6.setText("Endereço");
 
+        jTextField7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+        jTextField7.setPreferredSize(new java.awt.Dimension(64, 35));
+
+        jLabel7.setForeground(new java.awt.Color(153, 153, 153));
         jLabel7.setText("Email");
 
         javax.swing.GroupLayout panelRound4Layout = new javax.swing.GroupLayout(panelRound4);
         panelRound4.setLayout(panelRound4Layout);
         panelRound4Layout.setHorizontalGroup(
             panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound4Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound4Layout.createSequentialGroup()
                 .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelRound4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(kButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22))
+                        .addComponent(kButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelRound4Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(panelRound4Layout.createSequentialGroup()
                                 .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,19 +264,11 @@ public class FuncionarioPanel extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
-                                    .addComponent(jTextField7)))
+                                    .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(panelRound4Layout.createSequentialGroup()
                                 .addComponent(jLabel13)
                                 .addGap(210, 210, 210)
                                 .addComponent(jLabel14))
-                            .addGroup(panelRound4Layout.createSequentialGroup()
-                                .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9))
-                                .addGap(18, 18, 18)
-                                .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10)))
                             .addGroup(panelRound4Layout.createSequentialGroup()
                                 .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -272,12 +284,20 @@ public class FuncionarioPanel extends javax.swing.JPanel {
                                         .addGap(17, 17, 17)
                                         .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel6)
-                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(panelRound4Layout.createSequentialGroup()
+                                .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9))
+                                .addGap(18, 18, 18)
+                                .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel10))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                         .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(panelRound6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panelRound5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32))))
+                            .addComponent(panelRound5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(32, 32, 32))
         );
         panelRound4Layout.setVerticalGroup(
             panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,44 +310,44 @@ public class FuncionarioPanel extends javax.swing.JPanel {
                 .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRound4Layout.createSequentialGroup()
                         .addComponent(panelRound6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, 0)
                         .addComponent(panelRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelRound4Layout.createSequentialGroup()
                         .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                            .addComponent(jTextField6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTextField6)
+                            .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
                             .addComponent(jLabel6))
-                        .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(panelRound4Layout.createSequentialGroup()
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(16, 16, 16)
                                 .addComponent(jLabel11)
-                                .addGap(0, 0, 0)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(jLabel5))
                         .addGap(2, 2, 2)
-                        .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(20, 20, 20)
                 .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jLabel10))
-                .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jComboBox4)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(kButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
+                    .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout actualizarPanelLayout = new javax.swing.GroupLayout(actualizarPanel);
@@ -350,10 +370,7 @@ public class FuncionarioPanel extends javax.swing.JPanel {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "#ID", "Primeiro Nome", "Apelido", "Data de Nascimento", "Email", "Função", "Estado"
@@ -361,14 +378,17 @@ public class FuncionarioPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTable2);
 
+        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
         jLabel1.setText("Pesquisar");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Activos", "Inactivos" }));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Vendedor", "Cozinheiro", "Faxineiro", "Entregador" }));
 
+        jLabel2.setForeground(new java.awt.Color(153, 153, 153));
         jLabel2.setText("Por Estado");
 
+        jLabel3.setForeground(new java.awt.Color(153, 153, 153));
         jLabel3.setText("Por Função");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -386,12 +406,12 @@ public class FuncionarioPanel extends javax.swing.JPanel {
         });
 
         kButton1.setText("Actualizar");
-        kButton1.setkEndColor(new java.awt.Color(69, 163, 228));
-        kButton1.setkStartColor(new java.awt.Color(69, 163, 228));
+        kButton1.setkEndColor(new java.awt.Color(106, 192, 106));
+        kButton1.setkStartColor(new java.awt.Color(106, 192, 106));
 
         kButton2.setText("Eliminar");
-        kButton2.setkEndColor(new java.awt.Color(69, 163, 228));
-        kButton2.setkStartColor(new java.awt.Color(69, 163, 228));
+        kButton2.setkEndColor(new java.awt.Color(255, 51, 102));
+        kButton2.setkStartColor(new java.awt.Color(255, 51, 102));
 
         javax.swing.GroupLayout panelRound3Layout = new javax.swing.GroupLayout(panelRound3);
         panelRound3.setLayout(panelRound3Layout);
@@ -464,7 +484,7 @@ public class FuncionarioPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Actualizar", listarPanel);
+        jTabbedPane1.addTab("Listar / Actualizar", listarPanel);
 
         javax.swing.GroupLayout panelRound7Layout = new javax.swing.GroupLayout(panelRound7);
         panelRound7.setLayout(panelRound7Layout);
@@ -505,15 +525,13 @@ public class FuncionarioPanel extends javax.swing.JPanel {
         funcionarioBackgraundLayout.setHorizontalGroup(
             funcionarioBackgraundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(funcionarioBackgraundLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addGroup(funcionarioBackgraundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel19)
                     .addGroup(funcionarioBackgraundLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
                         .addComponent(panelRound7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
-                        .addComponent(panelRound8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(funcionarioBackgraundLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel19)))
+                        .addComponent(panelRound8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         funcionarioBackgraundLayout.setVerticalGroup(

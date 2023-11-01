@@ -7,6 +7,7 @@ package view.admin;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JDialog;
 import javax.swing.JPanel;
 import view.login.forms.LoginForm;
 
@@ -36,7 +37,14 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
         containerPanel.add(panel);
     }
     
-    private void setBackGraundOnMenuBotton(JPanel jPanel){
+    private void setColarBackGraund(JPanel menuBotton){
+        btnProdutos.setBackground(new Color(44,44,57));
+        btnEncomendas.setBackground(new Color(44,44,57));
+        btnVendas.setBackground(new Color(44,44,57));
+        btnClientes.setBackground(new Color(44,44,57));
+        btnFuncionario.setBackground(new Color(44,44,57));
+        btnRelatorio.setBackground(new Color(44,44,57));
+        menuBotton.setBackground(Color.red);
         
     }
 
@@ -574,10 +582,10 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
         );
 
         headerPanel.setBackground(new java.awt.Color(255, 234, 234));
-        headerPanel.setRoundBottomLeft(30);
-        headerPanel.setRoundBottomRight(30);
-        headerPanel.setRoundTopLeft(30);
-        headerPanel.setRoundTopRight(30);
+        headerPanel.setRoundBottomLeft(40);
+        headerPanel.setRoundBottomRight(40);
+        headerPanel.setRoundTopLeft(40);
+        headerPanel.setRoundTopRight(40);
 
         userProfilePanel.setBackground(new java.awt.Color(255, 255, 255));
         userProfilePanel.setRoundBottomLeft(60);
@@ -1157,7 +1165,7 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
 
         jLabel34.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(125, 121, 121));
-        jLabel34.setText("Numero total de Usuarios");
+        jLabel34.setText("Numero de Usuarios Diarios");
 
         jPanel1.setBackground(new java.awt.Color(84, 84, 104));
 
@@ -1172,34 +1180,30 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        jLabel39.setText("Aqui vem um grafico");
+        jLabel39.setText("Grafico de Barras");
 
         javax.swing.GroupLayout panelRound7Layout = new javax.swing.GroupLayout(panelRound7);
         panelRound7.setLayout(panelRound7Layout);
         panelRound7Layout.setHorizontalGroup(
             panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound7Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
                 .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRound7Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel34))
-                    .addGroup(panelRound7Layout.createSequentialGroup()
-                        .addGap(175, 175, 175)
-                        .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel39)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(190, Short.MAX_VALUE))
+                    .addComponent(jLabel39)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel34))
+                .addContainerGap(280, Short.MAX_VALUE))
         );
         panelRound7Layout.setVerticalGroup(
             panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound7Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel34)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel39)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
+                .addGap(68, 68, 68))
         );
 
         panelRound8.setBackground(new java.awt.Color(255, 255, 255));
@@ -1217,14 +1221,14 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
         panelRound8Layout.setHorizontalGroup(
             panelRound8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound8Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         panelRound8Layout.setVerticalGroup(
             panelRound8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound8Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(17, 17, 17)
                 .addComponent(jLabel26)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1506,7 +1510,9 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
 
     private void btnProdutosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProdutosMousePressed
         // TODO add your handling code here:
-        btnProdutos.setBackground(Color.red);
+        if(evt.getSource() == btnProdutos){
+            System.out.println("Botao presionado!!");
+        }
     }//GEN-LAST:event_btnProdutosMousePressed
 
     private void lblVerClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVerClientesMouseClicked
@@ -1656,7 +1662,7 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
     public void mousePressed(MouseEvent e) {
       
     }
-
+    
     @Override
     public void mouseReleased(MouseEvent e) {
     }
