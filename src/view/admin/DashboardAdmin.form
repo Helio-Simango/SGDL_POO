@@ -233,6 +233,9 @@
                 <Property name="roundTopLeft" type="int" value="60"/>
                 <Property name="roundTopRight" type="int" value="60"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAboutUsMouseClicked"/>
+              </Events>
 
               <Layout>
                 <DimensionLayout dim="0">

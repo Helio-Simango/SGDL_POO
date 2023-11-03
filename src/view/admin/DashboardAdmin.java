@@ -7,8 +7,8 @@ package view.admin;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import javax.swing.JDialog;
 import javax.swing.JPanel;
+import view.geral.SobreNosPanel;
 import view.login.forms.LoginForm;
 
 
@@ -191,6 +191,11 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
         btnAboutUs.setRoundBottomRight(60);
         btnAboutUs.setRoundTopLeft(60);
         btnAboutUs.setRoundTopRight(60);
+        btnAboutUs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAboutUsMouseClicked(evt);
+            }
+        });
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/help.png"))); // NOI18N
 
@@ -1529,6 +1534,11 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
         // TODO add your handling code here:
         showPanel(new  EncomendasPanel());
     }//GEN-LAST:event_lblVerEncomendasMouseClicked
+
+    private void btnAboutUsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAboutUsMouseClicked
+        // TODO add your handling code here:
+        showPanel(new SobreNosPanel());
+    }//GEN-LAST:event_btnAboutUsMouseClicked
 
     private void cardTotalProdutosMouseEntered(java.awt.event.MouseEvent evt) {                                               
         // TODO add your handling code here:
