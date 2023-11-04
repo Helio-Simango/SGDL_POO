@@ -75,6 +75,12 @@ public class Empregado implements Serializable {
     private String estado;
     @Column(name = "enderecoResidencia")
     private String enderecoResidencia;
+    @Column(name = "funcao")
+    private String funcao;
+    @Column(name = "Nuit")
+    private String nuit;
+    @Column(name = "BilheteIdentidade")
+    private String bilheteIdentidade;
     @JoinColumn(name = "fkFuncaoEmpregado", referencedColumnName = "idFuncao")
     @ManyToOne
     private Funcaoempregado fkFuncaoEmpregado;
@@ -181,9 +187,35 @@ public class Empregado implements Serializable {
         this.enderecoResidencia = enderecoResidencia;
     }
 
+    public String getFuncao() {
+        return funcao;
+    }
+
+    public void setFuncao(String funcao) {
+        this.funcao = funcao;
+    }
+    
     public Funcaoempregado getFkFuncaoEmpregado() {
         return fkFuncaoEmpregado;
     }
+
+    public String getNuit() {
+        return nuit;
+    }
+
+    public void setNuit(String nuit) {
+        this.nuit = nuit;
+    }
+
+    public String getBilheteIdentidade() {
+        return bilheteIdentidade;
+    }
+
+    public void setBilheteIdentidade(String bilheteIdentidade) {
+        this.bilheteIdentidade = bilheteIdentidade;
+    }
+    
+    
 
     public void setFkFuncaoEmpregado(Funcaoempregado fkFuncaoEmpregado) {
         this.fkFuncaoEmpregado = fkFuncaoEmpregado;
@@ -227,7 +259,7 @@ public class Empregado implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Empregado[ idEmpregado=" + idEmpregado + " ]";
+        return "model.Empregado[ idEmpregado=" + idEmpregado + " primeiroNome" + primeiroNome+" ]";
     }
     
 }

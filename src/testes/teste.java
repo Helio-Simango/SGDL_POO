@@ -4,7 +4,7 @@
  */
 package testes;
 
-import connection.Conexao;
+import connection.ConnectionFactory;
 import controllerDAO.CategoriaprodutoJpaController;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -18,16 +18,15 @@ public class teste {
     public static void main(String[] args) {
         
         
-        CategoriaprodutoJpaController categoriaProdutoDAO = new
-                        CategoriaprodutoJpaController(Conexao.getEmf());
+        CategoriaprodutoJpaController categoriaProdutoDAO = new CategoriaprodutoJpaController(ConnectionFactory.getEmf());
         
         // Instancia da clsse categoria
         Categoriaproduto categoria = new Categoriaproduto();
-        categoria.setCategoria("Frefrigerantes ");
-        categoria.setDescricao("Frefrigerantes!!");
+        categoria.setCategoria("Lanches quentes ");
+        categoria.setDescricao("Nesta categoria teremos hamburhue, hotdogs, sands e pregos!!");
         try {
-            categoriaProdutoDAO.create(categoria);
-            JOptionPane.showMessageDialog(null,"Categoria Salva com sucesso!");
+           // categoriaProdutoDAO.create(categoria);
+           // JOptionPane.showMessageDialog(null,"Categoria Salva com sucesso!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Erro ao Salvar a Categoria"+ e.getMessage());
         }
