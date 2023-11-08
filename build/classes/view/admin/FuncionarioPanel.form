@@ -345,6 +345,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI" size="14" style="1"/>
                             </Property>
+                            <Property name="kBorderRadius" type="int" value="30"/>
                             <Property name="kEndColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="6a" green="c0" red="6a" type="rgb"/>
                             </Property>
@@ -362,6 +363,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI" size="14" style="1"/>
                             </Property>
+                            <Property name="kBorderRadius" type="int" value="30"/>
                             <Property name="kEndColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="66" green="33" red="ff" type="rgb"/>
                             </Property>
@@ -633,10 +635,10 @@
                                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="66" green="66" red="66" type="rgb"/>
                                 </Property>
+                                <Property name="lineWrap" type="boolean" value="true"/>
                                 <Property name="rows" type="int" value="5"/>
                                 <Property name="tabSize" type="int" value="4"/>
                                 <Property name="wrapStyleWord" type="boolean" value="true"/>
-                                <Property name="autoscrolls" type="boolean" value="false"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                                     <LineBorder>
@@ -719,6 +721,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI" size="12" style="1"/>
                             </Property>
+                            <Property name="kBorderRadius" type="int" value="30"/>
                             <Property name="kEndColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="99" red="0" type="rgb"/>
                             </Property>
@@ -733,6 +736,7 @@
                         <Component class="com.k33ptoo.components.KButton" name="kButton2">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Adicionar Foto"/>
+                            <Property name="kBorderRadius" type="int" value="30"/>
                             <Property name="kEndColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="7a" green="6b" red="6b" type="rgb"/>
                             </Property>
@@ -796,12 +800,12 @@
                                       <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jComboBox1" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
+                                              <Component id="cbxPorEstado" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
                                               <Component id="jLabel2" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jComboBox2" min="-2" pref="147" max="-2" attributes="0"/>
+                                              <Component id="cbxPorFuncao" min="-2" pref="147" max="-2" attributes="0"/>
                                               <Component id="jLabel3" min="-2" pref="72" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -830,18 +834,16 @@
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jComboBox2" pref="39" max="32767" attributes="0"/>
-                                      <Component id="jComboBox1" max="32767" attributes="0"/>
+                                      <Component id="cbxPorFuncao" pref="39" max="32767" attributes="0"/>
+                                      <Component id="cbxPorEstado" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                   <Component id="jScrollPane2" pref="309" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="btnEditar" min="-2" pref="36" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jTextField2" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="jTextField2" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnEminar" alignment="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -875,7 +877,7 @@
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Component class="javax.swing.JComboBox" name="jComboBox1">
+                        <Component class="javax.swing.JComboBox" name="cbxPorEstado">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="3">
@@ -889,7 +891,7 @@
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="jComboBox2">
+                        <Component class="javax.swing.JComboBox" name="cbxPorFuncao">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="5">

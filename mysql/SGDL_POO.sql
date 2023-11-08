@@ -198,8 +198,23 @@ pedido (idPedido),
 fkEncomenda int,
 constraint fk_ItensCardapio_encomenda
 foreign key (fkEncomenda) references
-Encomenda (idEncomenda)
+Encomenda (idEncomenda),
+
+fkCardapio int,
+constraint fk_ItensCardapio_cardapio
+foreign key (fkCardapio) references
+cardapio (idCardapio)
 )ENGINE = InnoDB;
+
+
+-- modificacoes na tabela intsCardapio para!!
+ALTER TABLE itemcardapio
+ADD fkCardapio INT; 
+
+-- definir a restricao da chave estrangeira!! 
+ALTER TABLE itemcardapio
+ADD CONSTRAINT fk_ItensCardapio_cardapio
+FOREIGN KEY (fkCardapio) REFERENCES cardapio(idCardapio);
 
 -- ----------------------------------------------------------------------------------------
 -- -------------------------------- CATEGORAPRODUTO ---------------------------------------
@@ -228,6 +243,16 @@ constraint fk_idItemCardapio_produto
 foreign key (fkItemCardapio) references
 itemCardapio(idItemCardapio)
 )ENGINE = InnoDB;
+
+-- --------------------------------------------------------------------------------
+-- -------------------------------- Cardapio ---------------------------------------
+
+create table if not exists cardapio(
+ idCardapio int primary key auto_increment,
+ nomeDoCardapio varchar(60),
+ descricao varchar(60)
+) ENGINE = InnoDB;
+
 
 -- alter table produto add column precoUnitarioProduto double(10,3) not null;
 -- alter table produto add column precoCompraProduto double(10,3) not null;

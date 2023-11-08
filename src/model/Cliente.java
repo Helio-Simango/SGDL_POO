@@ -76,6 +76,10 @@ public class Cliente implements Serializable {
     @Basic(optional = false)
     @Column(name = "enderecoResidencia")
     private String enderecoResidencia;
+    @Column(name ="BilheteIdentidade")
+    private String bilheteIdentidade;
+    @Column(name = "Nuit")
+    private String nuit;
     @JoinColumn(name = "fkEnderecoEntrega", referencedColumnName = "idEnderecoEntrega")
     @ManyToOne
     private Enderecoentrega fkEnderecoEntrega;
@@ -182,6 +186,24 @@ public class Cliente implements Serializable {
     public String getEnderecoResidencia() {
         return enderecoResidencia;
     }
+
+    public String getBilheteIdentidade() {
+        return bilheteIdentidade;
+    }
+
+    public void setBilheteIdentidade(String bilheteIdentidade) {
+        this.bilheteIdentidade = bilheteIdentidade;
+    }
+
+    public String getNuit() {
+        return nuit;
+    }
+
+    public void setNuit(String nuit) {
+        this.nuit = nuit;
+    }
+    
+    
 
     public void setEnderecoResidencia(String enderecoResidencia) {
         this.enderecoResidencia = enderecoResidencia;

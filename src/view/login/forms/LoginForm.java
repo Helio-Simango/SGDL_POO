@@ -4,13 +4,19 @@
  */
 package view.login.forms;
 
+import controller.ModeloEmpregado;
+import controllerDAO.EmpregadoJpaController;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import model.Empregado;
 import view.admin.DashboardAdmin;
+import view.employees.DashboardEmployee;
 
 /**
  *
@@ -18,6 +24,10 @@ import view.admin.DashboardAdmin;
  */
 public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseListener{
 
+    private DashboardAdmin enviaEmp;
+    private EmpregadoJpaController empregadoDAO;
+    private Empregado emptmp;
+    
     private final String passwordString = " Introduz a palavra-passe";
     private final String emailString = " Introduz o email";
     private final String confirmPasswordString = " Confirma a sua palavra-passe";
@@ -27,11 +37,31 @@ public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseL
      */
     public LoginForm() {
         initComponents();
+        this.empregadoDAO = new EmpregadoJpaController(connection.ConnectionFactory.getEmf());
         setTextFeilds();
         txtPassWord1.setEchoChar((char) 0);
         setLoginImagen();
         System.out.println(" "+ txtEmailLogin.hasFocus());
+        lblUmaConta.setVisible(false);
+        lblCriaConta.setVisible(false);
     }
+    
+    /**
+     *  Envia um objecto do tipo Empregado 
+     *  para a tela Dashboaradmin
+     */
+    public void enviaEmpregado(Empregado emp){
+        if(enviaEmp == null){
+            enviaEmp = new DashboardAdmin();
+            enviaEmp.setVisible(true);
+            enviaEmp.recebeEmpregado(emp);
+        } else {
+            enviaEmp.setVisible(true);
+            //enviaEmp.setState(DashboardAdmin.NORMAL);
+            enviaEmp.recebeEmpregado(emp);
+        }
+    }
+    
     
    private void setTextFeilds(){
        // IniciarSessaoPanel
@@ -43,6 +73,8 @@ public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseL
         txtPassWord1.setText(passwordString);
         txtConfirmarPassWord.setText(confirmPasswordString);
     }
+   
+   
     /**
      *  Mostra o Painel recebido por parametro no frame
      *  usando o cardlayout.
@@ -53,6 +85,41 @@ public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseL
         containerPanel.repaint();
         containerPanel.revalidate();
         containerPanel.add(panel);
+    }
+    
+    /**
+     * 
+     * @param email
+     * @param senha
+     * 
+     *  rerurn Retorna o nivel de acesso Corespondente ao usuario
+     *         0 -> para super admin
+     *         1 -> para admin
+     *         2 -> para vendedor 
+     *         e -1 para quem nao tem acesso ao sistema
+     */
+    private int autenticarEmpregado(String email, String senha){
+        
+        List<Empregado> listaEmpregados = this.empregadoDAO.findEmpregadoEntities();
+        for(Empregado emp: listaEmpregados){
+            if(emp.getEmail().equals(email) && emp.getSenha().equals(senha) && emp.getNivelDeAcesso() == 0){
+                
+                this.emptmp = emp; // setar o funcionario encontrado
+                System.out.println("Sou Super Admin");
+                return 0;
+            } else if(emp.getEmail().equals(email) && emp.getSenha().equals(senha) && emp.getNivelDeAcesso() == 1){
+                
+                this.emptmp = emp; // setar o funcionario encontrado
+                System.out.println(" sou um admin");
+                return 1;
+            } else if(emp.getEmail().equals(email) && emp.getSenha().equals(senha) && emp.getNivelDeAcesso() == 2){
+                
+                this.emptmp = emp; // setar o funcionario encontrado
+                System.out.println(" Sou um vendedor");
+                return 2;
+            }
+        }
+        return -1;
     }
     
     /*
@@ -67,8 +134,8 @@ public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseL
     
     public void setLoginImagen(){
         ImageIcon icon = new ImageIcon("src/view/imagens/LoginImage.jpeg");
-        icon.setImage(icon.getImage().getScaledInstance(lblLoginImage.getWidth(), lblLoginImage.getWidth(), 1));
-        lblLoginImage.setIcon(icon);
+//        icon.setImage(icon.getImage().getScaledInstance(lblLoginImage.getWidth(), lblLoginImage.getWidth(), 1));
+ //       lblLoginImage.setIcon(icon);
        // rigthRoundedPanel.add(lblLoginImage);
     }
     /**
@@ -87,7 +154,7 @@ public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseL
         btnEsqueceuPassword = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        tbnIniciarSessaao = new com.k33ptoo.components.KButton();
+        btnIniciarSessaao = new com.k33ptoo.components.KButton();
         txtPassWordLogin = new javax.swing.JPasswordField();
         txtEmailLogin = new javax.swing.JTextField();
         ckLembrarPassword = new javax.swing.JCheckBox();
@@ -108,7 +175,6 @@ public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseL
         lblTensConta = new javax.swing.JLabel();
         lblIniciarSessão = new javax.swing.JLabel();
         rigthRoundedPanel = new view.extras.PanelRound();
-        lblLoginImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -140,15 +206,16 @@ public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseL
         jLabel3.setForeground(new java.awt.Color(153, 153, 153));
         jLabel3.setText("Inicie a sessão na sua conta");
 
-        tbnIniciarSessaao.setText("Iniciar a Sessão");
-        tbnIniciarSessaao.setkEndColor(new java.awt.Color(44, 44, 57));
-        tbnIniciarSessaao.setkHoverEndColor(new java.awt.Color(51, 51, 51));
-        tbnIniciarSessaao.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        tbnIniciarSessaao.setkHoverStartColor(new java.awt.Color(51, 51, 51));
-        tbnIniciarSessaao.setkStartColor(new java.awt.Color(44, 44, 57));
-        tbnIniciarSessaao.addActionListener(new java.awt.event.ActionListener() {
+        btnIniciarSessaao.setText("Iniciar a Sessão");
+        btnIniciarSessaao.setkBorderRadius(30);
+        btnIniciarSessaao.setkEndColor(new java.awt.Color(44, 44, 57));
+        btnIniciarSessaao.setkHoverEndColor(new java.awt.Color(51, 51, 51));
+        btnIniciarSessaao.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnIniciarSessaao.setkHoverStartColor(new java.awt.Color(51, 51, 51));
+        btnIniciarSessaao.setkStartColor(new java.awt.Color(44, 44, 57));
+        btnIniciarSessaao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tbnIniciarSessaaoActionPerformed(evt);
+                btnIniciarSessaaoActionPerformed(evt);
             }
         });
 
@@ -219,7 +286,7 @@ public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseL
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ckLembrarPassword)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tbnIniciarSessaao, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                                .addComponent(btnIniciarSessaao, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
                                 .addComponent(txtPassWordLogin))
                             .addComponent(txtEmailLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -241,7 +308,7 @@ public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseL
                 .addGap(4, 4, 4)
                 .addComponent(ckLembrarPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tbnIniciarSessaao, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnIniciarSessaao, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEsqueceuPassword)
                 .addContainerGap(44, Short.MAX_VALUE))
@@ -504,13 +571,11 @@ public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseL
         rigthRoundedPanel.setLayout(rigthRoundedPanelLayout);
         rigthRoundedPanelLayout.setHorizontalGroup(
             rigthRoundedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(rigthRoundedPanelLayout.createSequentialGroup()
-                .addComponent(lblLoginImage, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGap(0, 525, Short.MAX_VALUE)
         );
         rigthRoundedPanelLayout.setVerticalGroup(
             rigthRoundedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblLoginImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout backgraundPanelLayout = new javax.swing.GroupLayout(backgraundPanel);
@@ -553,14 +618,43 @@ public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseL
         resetPasswodForm.setVisible(true);
     }//GEN-LAST:event_btnEsqueceuPasswordMouseClicked
 
-    private void tbnIniciarSessaaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbnIniciarSessaaoActionPerformed
-        // TODO add your handling code here:
+    private void btnIniciarSessaaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSessaaoActionPerformed
+
+        if(autenticarEmpregado(txtEmailLogin.getText(), txtPassWordLogin.getText()) == 0){
+            DashboardAdmin dashboardAmin = new DashboardAdmin();
+            
+            ModeloEmpregado modeloEmp = new ModeloEmpregado();
+            modeloEmp.setPrimeiroNome(emptmp.getPrimeiroNome());
+            modeloEmp.setFuncao(emptmp.getFuncao());
+            dashboardAmin.exportarDados(modeloEmp);
+            
+            dashboardAmin.setVisible(true);
+            this.dispose();
+        } else if(autenticarEmpregado(txtEmailLogin.getText(), txtPassWordLogin.getText()) == 1){
+            DashboardAdmin dashboardAmin = new DashboardAdmin();
+            
+            ModeloEmpregado modeloEmp = new ModeloEmpregado();
+            modeloEmp.setPrimeiroNome(emptmp.getPrimeiroNome());
+            modeloEmp.setFuncao(emptmp.getFuncao());
+            dashboardAmin.exportarDados(modeloEmp);
+            
+            dashboardAmin.setVisible(true);
+            this.dispose();
+        } else if(autenticarEmpregado(txtEmailLogin.getText(), txtPassWordLogin.getText()) == 2){
+            DashboardEmployee dashboardEmp = new DashboardEmployee();
+            
+            ModeloEmpregado modeloEmp = new ModeloEmpregado();
+            modeloEmp.setPrimeiroNome(emptmp.getPrimeiroNome());
+            modeloEmp.setFuncao(emptmp.getFuncao());
+            dashboardEmp.exportarDados(modeloEmp);
+            
+            dashboardEmp.setVisible(true);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Email ou senha Incorrectos");
+        }
         
-        // Mais Logic a ser implementada!!
-        this.dispose();
-        DashboardAdmin dashboardAmin = new DashboardAdmin();
-        dashboardAmin.setVisible(true);
-    }//GEN-LAST:event_tbnIniciarSessaaoActionPerformed
+    }//GEN-LAST:event_btnIniciarSessaaoActionPerformed
 
     private void txtPassWordLoginCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtPassWordLoginCaretUpdate
         // TODO add your handling code here:
@@ -815,6 +909,7 @@ public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseL
     private javax.swing.JPanel backgraundPanel;
     private com.k33ptoo.components.KButton btnContinuar;
     private javax.swing.JLabel btnEsqueceuPassword;
+    private com.k33ptoo.components.KButton btnIniciarSessaao;
     private javax.swing.JCheckBox ckLembrarPassword;
     private javax.swing.JCheckBox ckLembrarPassword1;
     private javax.swing.JPanel containerPanel;
@@ -829,11 +924,9 @@ public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseL
     private javax.swing.JLabel lblCriaConta;
     private javax.swing.JLabel lblEsqueceuPassword;
     private javax.swing.JLabel lblIniciarSessão;
-    private javax.swing.JLabel lblLoginImage;
     private javax.swing.JLabel lblTensConta;
     private javax.swing.JLabel lblUmaConta;
     private view.extras.PanelRound rigthRoundedPanel;
-    private com.k33ptoo.components.KButton tbnIniciarSessaao;
     private javax.swing.JPasswordField txtConfirmarPassWord;
     private javax.swing.JTextField txtEmail1;
     private javax.swing.JTextField txtEmailLogin;
@@ -853,10 +946,7 @@ public class LoginForm extends javax.swing.JFrame implements KeyListener, MouseL
     @Override
     public void keyReleased(KeyEvent e) {
     }
-
-    
-
-    
+  
     // Metedos Da Interface MouseListner
     @Override
     public void mouseClicked(MouseEvent e) {

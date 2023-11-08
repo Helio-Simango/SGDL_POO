@@ -1,11 +1,11 @@
-/*s
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package view.admin;
 
+import controller.GeradorDeSenhasAleatorias;
 import controllerDAO.EmpregadoJpaController;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -17,7 +17,7 @@ import model.Empregado;
  *
  * @author helio
  */
-public class FuncionarioPanel extends javax.swing.JPanel {
+public class FuncionarioPanel extends javax.swing.JPanel implements KeyListener{
 
     private EmpregadoJpaController empregadoDAO;
     private int idEmp;
@@ -27,14 +27,34 @@ public class FuncionarioPanel extends javax.swing.JPanel {
      */
     public FuncionarioPanel() {
         initComponents();
+        init();  // inicializar todos os componentes da UI.
+    }
+    
+    private void init(){
         //inicializar o controller!!
         this.empregadoDAO = new EmpregadoJpaController(connection.ConnectionFactory.getEmf());
         //Formatar a Data para o padrao nacional
-        this.cbxDataNascimento.setDateFormatString("dd /MM /yyyy");
+        // this.formatDate  = new SimpleDateFormat("dd /MM /yyyy");
+        //this.cbxDataNascimento.setDateFormatString("dd /MM /yyyy");
         this.preencherTabela();
         this.btnSalvar.setEnabled(false);
         this.btnActualizar.setEnabled(false);
         this.habilitarActualizar(false);
+        
+        //Adicionar Eventos de teclado
+        txtPrimeiroNome.addKeyListener(this);
+        txtApelido.addKeyListener(this);
+        txtBilheteIdentidade.addKeyListener(this);
+        txtEndereco.addKeyListener(this);
+        cbxDataNascimento.addKeyListener(this);
+        txtNuit.addKeyListener(this);
+        txtEmail.addKeyListener(this);
+        cbxEstado.addKeyListener(this);
+        cbxFuncao.addKeyListener(this);
+        cbxSexo.addKeyListener(this);
+        btnActualizar.addKeyListener(this);
+        btnSalvar.addKeyListener(this);
+        btnCancelar.addKeyListener(this);
     }
     
     /**
@@ -43,10 +63,13 @@ public class FuncionarioPanel extends javax.swing.JPanel {
      * @return 
      */
     private boolean salvarEmpregado(Empregado emp){ 
-          try {
+        
+        try {
             //Salvar od dados no banco de dados
             this.empregadoDAO.create(emp);
             JOptionPane.showMessageDialog(null, "Funcionario Cadastrado com sucesso! ");
+            this.limparCampos();
+            this.preencherTabela();
             return true;  // retorne verdadeiro se o funcionario for gravado com sucesso!!
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar o funcionario");
@@ -57,11 +80,11 @@ public class FuncionarioPanel extends javax.swing.JPanel {
     }
     
     /**
-     * 
+     * @param idEmp
      * @param emp
-     * @return 
+     * @return true se o funcionario for cadastrado, false caso contrario 
      */
-    private boolean actualizarEmpregado(){
+    private boolean actualizarEmpregado(int idEmp){
         // Buscar o funcionario pelo id
         Empregado emp = this.empregadoDAO.findEmpregado(idEmp);
         String sexo = String.valueOf(cbxSexo.getSelectedItem());
@@ -91,7 +114,10 @@ public class FuncionarioPanel extends javax.swing.JPanel {
             return false;
         }
     }
-    
+    /**
+     * 
+     * @return 
+     */
     private boolean excluirFisico(){
         // pegar o 'id' que esta preenchido no campo
         // Antes de excluir fazer uma confirmação
@@ -122,6 +148,10 @@ public class FuncionarioPanel extends javax.swing.JPanel {
         return false;
     }
     
+    /**
+     * 
+     * @return 
+     */
     private boolean excluirEmpregado(){
         // 0 - se clicou em "sim"
         // 1 - se clicou em "nao"
@@ -160,10 +190,55 @@ public class FuncionarioPanel extends javax.swing.JPanel {
         return false;
     }
     
+   /**
+     * @Metdo  preenche o os campos de texto apartir do id selecionado
+     *         Na tabela
+     * 
+     * @return o id do cliente selecionado na tabela,
+     *         caso nao seja selecionado um cliente retorna -1
+     */
+    private int editarPreencherCampos(){
+        
+        int LinhaSelecionada = tblEmpregados.getSelectedRow();
+        if(LinhaSelecionada == -1){
+            JOptionPane.showMessageDialog(null, "Selecione uma linha na tabela!");
+        } else {   
+            // pegar o ID na tabella (1 coluna) e buscar od dados do funcionario no BD
+            int id = Integer.parseInt(tblEmpregados.getValueAt(LinhaSelecionada, 0).toString());
+            Empregado emp = this.empregadoDAO.findEmpregado(id);
+            
+            txtPrimeiroNome.setText(emp.getPrimeiroNome());
+            txtApelido.setText(emp.getApelido());
+            txtBilheteIdentidade.setText(emp.getBilheteIdentidade());
+            txtNuit.setText(emp.getNuit());
+            txtEmail.setText(emp.getEmail());
+            txtEndereco.setText(emp.getEnderecoResidencia());
+            cbxDataNascimento.setDate(emp.getDataNascimento());
+            cbxFuncao.setSelectedItem(emp.getFuncao());
+            cbxEstado.setSelectedItem(emp.getEstado());
+            //cbxSexo.setSelectedItem(emp.getSexo());
+       
+            if(emp.getSexo() == 'M'){
+                cbxSexo.setSelectedIndex(0);
+            } else {
+                cbxSexo.setSelectedIndex(1);
+            }
+            
+            // setar o id do empregado a idEmp para uso geral
+            //idEmp = emp.getIdEmpregado();
+            habilitarActualizar(true);
+            tabbedPaneFuncionario.setSelectedIndex(0);
+            
+            return emp.getIdEmpregado();
+        }
+        
+        return -1;
+    }
+    
     private void preencherTabela(){
         List<Empregado>  listaEmp = this.empregadoDAO.findEmpregadoEntities();
         DefaultTableModel tabela = (DefaultTableModel) tblEmpregados.getModel();
-        SimpleDateFormat formatDate = new SimpleDateFormat("dd /MM /yyyy");
+        //SimpleDateFormat formatDate = new SimpleDateFormat("dd /MM /yyyy");
         
         // Zera as linhas da table, para nao duplicar os dados
         tabela.setNumRows(0);
@@ -176,7 +251,8 @@ public class FuncionarioPanel extends javax.swing.JPanel {
                 emp.getPrimeiroNome(),
                 emp.getApelido(),
                 emp.getSexo(),
-                formatDate.format(emp.getDataNascimento()), // Data Formatada No padra nacional!!
+                //formatDate.format(emp.getDataNascimento()), // Data Formatada No padra nacional!!
+                emp.getDataNascimento(),
                 emp.getEmail(),
                 emp.getFuncao(),
                 emp.getEstado()
@@ -197,7 +273,6 @@ public class FuncionarioPanel extends javax.swing.JPanel {
         txtNuit.setText("");
         txtEndereco.setText("");
         cbxDataNascimento.setDate(null);
-        //cbxDataNascimento.setDateFormatString("dd/MM/yyyy");
         cbxEstado.setSelectedIndex(0);
         cbxFuncao.setSelectedIndex(0);
         cbxSexo.setSelectedIndex(0);   
@@ -286,8 +361,8 @@ public class FuncionarioPanel extends javax.swing.JPanel {
         panelRound3 = new view.extras.PanelRound();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblEmpregados = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cbxPorEstado = new javax.swing.JComboBox<>();
+        cbxPorFuncao = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -335,6 +410,7 @@ public class FuncionarioPanel extends javax.swing.JPanel {
 
         btnSalvar.setText("Salvar");
         btnSalvar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSalvar.setkBorderRadius(30);
         btnSalvar.setkEndColor(new java.awt.Color(106, 192, 106));
         btnSalvar.setkStartColor(new java.awt.Color(106, 192, 106));
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -345,6 +421,7 @@ public class FuncionarioPanel extends javax.swing.JPanel {
 
         btnCancelar.setText("Cancelar");
         btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCancelar.setkBorderRadius(30);
         btnCancelar.setkEndColor(new java.awt.Color(255, 51, 102));
         btnCancelar.setkStartColor(new java.awt.Color(255, 51, 102));
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -439,10 +516,10 @@ public class FuncionarioPanel extends javax.swing.JPanel {
 
         txtEndereco.setColumns(20);
         txtEndereco.setForeground(new java.awt.Color(102, 102, 102));
+        txtEndereco.setLineWrap(true);
         txtEndereco.setRows(5);
         txtEndereco.setTabSize(4);
         txtEndereco.setWrapStyleWord(true);
-        txtEndereco.setAutoscrolls(false);
         txtEndereco.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
         jScrollPane1.setViewportView(txtEndereco);
 
@@ -467,6 +544,7 @@ public class FuncionarioPanel extends javax.swing.JPanel {
 
         btnActualizar.setText("Actualizar");
         btnActualizar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnActualizar.setkBorderRadius(30);
         btnActualizar.setkEndColor(new java.awt.Color(0, 153, 255));
         btnActualizar.setkStartColor(new java.awt.Color(0, 153, 255));
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -476,6 +554,7 @@ public class FuncionarioPanel extends javax.swing.JPanel {
         });
 
         kButton2.setText("Adicionar Foto");
+        kButton2.setkBorderRadius(30);
         kButton2.setkEndColor(new java.awt.Color(107, 107, 122));
         kButton2.setkStartColor(new java.awt.Color(107, 107, 122));
         kButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -637,9 +716,9 @@ public class FuncionarioPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblEmpregados);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Activos", "Inactivos" }));
+        cbxPorEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Activos", "Inactivos" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas", "Vendedor", "Cozinheiro", "Faxineiro", "Entregador" }));
+        cbxPorFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas", "Vendedor", "Cozinheiro", "Faxineiro", "Entregador" }));
 
         jLabel2.setForeground(new java.awt.Color(153, 153, 153));
         jLabel2.setText("Por Estado");
@@ -688,11 +767,11 @@ public class FuncionarioPanel extends javax.swing.JPanel {
                     .addComponent(jScrollPane2)
                     .addGroup(panelRound3Layout.createSequentialGroup()
                         .addGroup(panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxPorEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxPorFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(panelRound3Layout.createSequentialGroup()
@@ -714,16 +793,15 @@ public class FuncionarioPanel extends javax.swing.JPanel {
                     .addComponent(jLabel3))
                 .addGap(0, 0, 0)
                 .addGroup(panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                    .addComponent(jComboBox1))
+                    .addComponent(cbxPorFuncao, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                    .addComponent(cbxPorEstado))
                 .addGap(8, 8, 8)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel4))
+                    .addComponent(jTextField2)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnEminar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -834,6 +912,7 @@ public class FuncionarioPanel extends javax.swing.JPanel {
         Empregado emp = new Empregado();
         Date date = new Date(System.currentTimeMillis());  
         String sexo = String.valueOf(cbxSexo.getSelectedItem());
+        GeradorDeSenhasAleatorias geradorSenhas = new GeradorDeSenhasAleatorias();
         
         emp.setPrimeiroNome(txtPrimeiroNome.getText());
         emp.setApelido(txtApelido.getText());
@@ -843,11 +922,14 @@ public class FuncionarioPanel extends javax.swing.JPanel {
         emp.setNuit(txtNuit.getText());
         emp.setEstado(String.valueOf(cbxEstado.getSelectedItem()));
         emp.setFuncao(String.valueOf(cbxFuncao.getSelectedItem()));
+        if(String.valueOf(cbxFuncao.getSelectedItem()).equals("Vendedor") ){
+            emp.setNivelDeAcesso(2);
+        }
         emp.setDataCadastro(date);
         emp.setDataNascimento(cbxDataNascimento.getDate());
         emp.setEnderecoResidencia(txtEndereco.getText());
-        emp.setSexo(sexo.charAt(0)); // Converter uma string "M" em um char 'M'
-        emp.setSenha("Vendedor");
+        emp.setSexo(sexo.charAt(0));    // Converter uma string "M" em um char 'M'
+        emp.setSenha(geradorSenhas.gerarSenhaAleatoria());   //Gerar uma nova senha Aleatoria Para Ca registo.
         
         if(salvarEmpregado(emp)){
             this.habilitarActualizar(false);
@@ -855,58 +937,25 @@ public class FuncionarioPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
         limparCampos();
         habilitarActualizar(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        
-        int LinhaSelecionada = tblEmpregados.getSelectedRow();
-        if(LinhaSelecionada == -1){
-            JOptionPane.showMessageDialog(null, "Selecione uma linha na tabela!");
-        } else {   
-            // pegar o ID na tabella (1 coluna) e buscar od dados do funcionario no BD
-            int id = Integer.parseInt(tblEmpregados.getValueAt(LinhaSelecionada, 0).toString());
-            Empregado emp = this.empregadoDAO.findEmpregado(id);
-            
-            txtPrimeiroNome.setText(emp.getPrimeiroNome());
-            txtApelido.setText(emp.getApelido());
-            txtBilheteIdentidade.setText(emp.getBilheteIdentidade());
-            txtNuit.setText(emp.getNuit());
-            txtEmail.setText(emp.getEmail());
-            txtEndereco.setText(emp.getEnderecoResidencia());
-            cbxDataNascimento.setDate(emp.getDataNascimento());
-            
-            if(emp.getEstado() == "Activo"){
-                cbxEstado.setSelectedIndex(0);
-            } else {
-                cbxEstado.setSelectedIndex(1);
-            }
-            
-            if(emp.getSexo() == 'M'){
-                cbxSexo.setSelectedIndex(0);
-            } else {
-                cbxSexo.setSelectedIndex(1);
-            }
-            // setar o id do empregado a idEmp para uso geral
-            idEmp = emp.getIdEmpregado();
-            habilitarActualizar(true);
-            tabbedPaneFuncionario.setSelectedIndex(0);
-        }
+        //Puxar o id do funcionario a ser actualizado na tabela
+        //pesquisar por id, set Campo para serem Actualizados
+        idEmp = editarPreencherCampos();
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-
         System.out.println("Cheguei aqui!!!");
         // depois de actualizar os dados desactivar os dados!!
-        if(actualizarEmpregado()){
+        if(actualizarEmpregado(idEmp)){
             habilitarActualizar(false);
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnEminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEminarActionPerformed
-      
         // if(excluirFisico()){
        //     limparCampos();
        //     preencherTabela();
@@ -918,7 +967,6 @@ public class FuncionarioPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEminarActionPerformed
 
     private void kButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2ActionPerformed
-        // TODO add your handling code here:
         // adicionarImagen();
     }//GEN-LAST:event_kButton2ActionPerformed
 
@@ -933,10 +981,10 @@ public class FuncionarioPanel extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser cbxDataNascimento;
     private javax.swing.JComboBox<String> cbxEstado;
     private javax.swing.JComboBox<String> cbxFuncao;
+    private javax.swing.JComboBox<String> cbxPorEstado;
+    private javax.swing.JComboBox<String> cbxPorFuncao;
     private javax.swing.JComboBox<String> cbxSexo;
     private view.extras.PanelRound funcionarioBackgraund;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -972,4 +1020,57 @@ public class FuncionarioPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtNuit;
     private javax.swing.JTextField txtPrimeiroNome;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            if(txtPrimeiroNome.hasFocus()){
+                cbxDataNascimento.requestFocus();
+                cbxDataNascimento.setDate(null);
+            } else if(cbxDataNascimento.hasFocus()){
+                txtApelido.requestFocus();
+                txtApelido.setText("");
+            } else if(txtApelido.hasFocus()){
+                txtEndereco.requestFocus();
+                txtEndereco.setText("");
+            } else if(txtEndereco.hasFocus()){
+                txtBilheteIdentidade.requestFocus();
+                txtBilheteIdentidade.setText("");
+            } else if(txtBilheteIdentidade.hasFocus()){               
+                txtNuit.requestFocus();
+                txtNuit.setText("");
+            } else if(txtNuit.hasFocus()){
+                txtEmail.requestFocus();
+                txtEmail.setText("");
+            } else if(txtEmail.hasFocus()){
+                cbxEstado.requestFocus();
+                cbxEstado.setSelectedIndex(0);
+            } else if(cbxEstado.hasFocus()){
+                cbxFuncao.requestFocus();
+                cbxFuncao.setSelectedIndex(0);
+                //
+            } else if(cbxFuncao.hasFocus()){
+                cbxSexo.requestFocus();
+                cbxSexo.setSelectedIndex(0);
+            } else if(cbxSexo.hasFocus()){
+                if(btnSalvar.isEnabled()){
+                    btnSalvar.requestFocus();
+                    //btnSalvar.doClick();
+                }else{
+                    btnActualizar.requestFocus();
+                   // btnActualizar.doClick();
+                }
+            }
+        } else if(e.getKeyCode()== KeyEvent.VK_ESCAPE){
+            btnCancelar.requestFocus();
+           // btnCancelar.doClick();
+        }
+    }
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
 }

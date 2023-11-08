@@ -26,10 +26,14 @@ public class MyProfilePanel extends javax.swing.JPanel {
         initComponents();
     }
     
-   //   public ImageIcon seticon(String m, byte[] image){
-        
-    //}
-    
+    private void habilitarCampos(boolean option){
+        if(option == true){
+            
+        }else{
+            
+        }
+    }
+   
     private void adicionarImagen(){
         JFileChooser file = new JFileChooser();
         file.setCurrentDirectory(new File("user.dir"));
@@ -54,21 +58,33 @@ public class MyProfilePanel extends javax.swing.JPanel {
         dashboardPanel = new view.extras.PanelRound();
         jLabel19 = new javax.swing.JLabel();
         panelRound7 = new view.extras.PanelRound();
-        jLabel13 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jLabel12 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        kButton4 = new com.k33ptoo.components.KButton();
-        kButton3 = new com.k33ptoo.components.KButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
-        kButton1 = new com.k33ptoo.components.KButton();
+        btnAlterarPassword = new com.k33ptoo.components.KButton();
+        btnSalvar = new com.k33ptoo.components.KButton();
+        btnEditar = new com.k33ptoo.components.KButton();
         imageAvatar1 = new view.extras.ImageAvatar();
         kButton2 = new com.k33ptoo.components.KButton();
+        cbxDataNascimento = new com.toedter.calendar.JDateChooser();
+        jLabel14 = new javax.swing.JLabel();
+        txtPrimeiroNome = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtApelido = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        txtBilheteIdentidade = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtNuit = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtEndereco = new javax.swing.JTextArea();
+        jLabel6 = new javax.swing.JLabel();
+        cbxFuncao = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        cbxSexo = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
+        Password = new javax.swing.JLabel();
+        ckLembrarPassword = new javax.swing.JCheckBox();
         panelRound8 = new view.extras.PanelRound();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -89,68 +105,137 @@ public class MyProfilePanel extends javax.swing.JPanel {
         panelRound7.setRoundTopLeft(60);
         panelRound7.setRoundTopRight(60);
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel13.setText("Primeiro Nome");
-
-        jTextField6.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        jTextField6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
-
-        jLabel14.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel14.setText("Data de Nascimento");
-
-        jDateChooser2.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel12.setText("Apelido");
-
-        jTextField5.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        jTextField5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel11.setText("Email");
-
-        jTextField4.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        jTextField4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
-
-        kButton4.setText("Alterar Pass-word");
-        kButton4.setkEndColor(new java.awt.Color(0, 153, 255));
-        kButton4.setkStartColor(new java.awt.Color(0, 153, 255));
-        kButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnAlterarPassword.setText("Alterar Pass-word");
+        btnAlterarPassword.setkBorderRadius(30);
+        btnAlterarPassword.setkEndColor(new java.awt.Color(0, 153, 255));
+        btnAlterarPassword.setkHoverColor(new java.awt.Color(0, 153, 255));
+        btnAlterarPassword.setkHoverEndColor(new java.awt.Color(0, 153, 255));
+        btnAlterarPassword.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnAlterarPassword.setkHoverStartColor(new java.awt.Color(0, 153, 255));
+        btnAlterarPassword.setkStartColor(new java.awt.Color(0, 153, 255));
+        btnAlterarPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton4ActionPerformed(evt);
+                btnAlterarPasswordActionPerformed(evt);
             }
         });
 
-        kButton3.setText("Salvar");
-        kButton3.setkEndColor(new java.awt.Color(106, 192, 106));
-        kButton3.setkStartColor(new java.awt.Color(106, 192, 106));
+        btnSalvar.setText("Salvar");
+        btnSalvar.setkBorderRadius(30);
+        btnSalvar.setkEndColor(new java.awt.Color(106, 192, 106));
+        btnSalvar.setkStartColor(new java.awt.Color(106, 192, 106));
 
-        jPasswordField1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        jPasswordField1.setText("jPasswordField1fghjhgfdsadfjjhgfhjkllkhrssetgjlçlkjhgfdfgh");
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel1.setText("Password");
-
-        kButton1.setText("Editar");
-        kButton1.setkEndColor(new java.awt.Color(194, 232, 194));
-        kButton1.setkStartColor(new java.awt.Color(141, 202, 141));
+        btnEditar.setText("Editar");
+        btnEditar.setkBorderRadius(30);
+        btnEditar.setkEndColor(new java.awt.Color(155, 188, 161));
+        btnEditar.setkStartColor(new java.awt.Color(155, 188, 161));
 
         imageAvatar1.setForeground(new java.awt.Color(246, 215, 215));
         imageAvatar1.setBorderSize(10);
         imageAvatar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/icons_Male_User.png"))); // NOI18N
 
         kButton2.setText("Adicionar Foto");
-        kButton2.setkEndColor(new java.awt.Color(0, 153, 255));
-        kButton2.setkStartColor(new java.awt.Color(0, 153, 255));
+        kButton2.setkBorderRadius(30);
+        kButton2.setkEndColor(new java.awt.Color(107, 107, 122));
+        kButton2.setkHoverEndColor(new java.awt.Color(107, 107, 122));
+        kButton2.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        kButton2.setkHoverStartColor(new java.awt.Color(107, 107, 122));
+        kButton2.setkStartColor(new java.awt.Color(107, 107, 122));
         kButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kButton2ActionPerformed(evt);
+            }
+        });
+
+        cbxDataNascimento.setBackground(new java.awt.Color(255, 255, 255));
+        cbxDataNascimento.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        cbxDataNascimento.setForeground(new java.awt.Color(102, 102, 102));
+        cbxDataNascimento.setPreferredSize(new java.awt.Dimension(82, 35));
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel14.setText("Data de Nascimento");
+
+        txtPrimeiroNome.setForeground(new java.awt.Color(102, 102, 102));
+        txtPrimeiroNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel13.setText("Primeiro Nome");
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel12.setText("Apelido");
+
+        txtApelido.setForeground(new java.awt.Color(102, 102, 102));
+        txtApelido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+        txtApelido.setPreferredSize(new java.awt.Dimension(64, 35));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel11.setText("Bilhete e Identidade");
+
+        txtBilheteIdentidade.setForeground(new java.awt.Color(102, 102, 102));
+        txtBilheteIdentidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+
+        jLabel5.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel5.setText("Nuit");
+
+        txtNuit.setForeground(new java.awt.Color(102, 102, 102));
+        txtNuit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+        txtNuit.setPreferredSize(new java.awt.Dimension(64, 30));
+        txtNuit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNuitActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel7.setText("Email");
+
+        txtEmail.setForeground(new java.awt.Color(102, 102, 102));
+        txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+        txtEmail.setPreferredSize(new java.awt.Dimension(64, 35));
+
+        txtEndereco.setColumns(20);
+        txtEndereco.setForeground(new java.awt.Color(102, 102, 102));
+        txtEndereco.setLineWrap(true);
+        txtEndereco.setRows(5);
+        txtEndereco.setTabSize(4);
+        txtEndereco.setWrapStyleWord(true);
+        txtEndereco.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+        jScrollPane1.setViewportView(txtEndereco);
+
+        jLabel6.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel6.setText("Endereço");
+
+        cbxFuncao.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        cbxFuncao.setForeground(new java.awt.Color(102, 102, 102));
+        cbxFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vendedor", "Cozinheiro", "Faxineiro", "Entregador" }));
+        cbxFuncao.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel10.setText("Função");
+
+        cbxSexo.setForeground(new java.awt.Color(102, 102, 102));
+        cbxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F" }));
+
+        jLabel8.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel8.setText("Sexo");
+
+        txtPassword.setForeground(new java.awt.Color(102, 102, 102));
+        txtPassword.setText("jPasswordField2");
+        txtPassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
+
+        Password.setForeground(new java.awt.Color(153, 153, 153));
+        Password.setText("Password");
+
+        ckLembrarPassword.setForeground(new java.awt.Color(153, 153, 153));
+        ckLembrarPassword.setText("Lembrar a Pass-word");
+        ckLembrarPassword.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        ckLembrarPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckLembrarPasswordActionPerformed(evt);
             }
         });
 
@@ -158,82 +243,130 @@ public class MyProfilePanel extends javax.swing.JPanel {
         panelRound7.setLayout(panelRound7Layout);
         panelRound7Layout.setHorizontalGroup(
             panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound7Layout.createSequentialGroup()
-                .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRound7Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelRound7Layout.createSequentialGroup()
-                                .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
-                                .addGap(33, 33, 33)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))
-                            .addGroup(panelRound7Layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel14)
-                                .addGap(70, 70, 70))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelRound7Layout.createSequentialGroup()
-                                .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(kButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
-                                        .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound7Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)))
+            .addGroup(panelRound7Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRound7Layout.createSequentialGroup()
                         .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(imageAvatar1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound7Layout.createSequentialGroup()
-                        .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47))))
+                            .addComponent(ckLembrarPassword)
+                            .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(Password)
+                                .addGroup(panelRound7Layout.createSequentialGroup()
+                                    .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(cbxFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel8)
+                                        .addComponent(cbxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtPassword)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panelRound7Layout.createSequentialGroup()
+                        .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelRound7Layout.createSequentialGroup()
+                                .addComponent(btnAlterarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelRound7Layout.createSequentialGroup()
+                                .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(panelRound7Layout.createSequentialGroup()
+                                        .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel5)
+                                            .addComponent(txtNuit, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel7)
+                                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(panelRound7Layout.createSequentialGroup()
+                                        .addComponent(jLabel13)
+                                        .addGap(210, 210, 210)
+                                        .addComponent(jLabel14))
+                                    .addGroup(panelRound7Layout.createSequentialGroup()
+                                        .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtPrimeiroNome, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtBilheteIdentidade, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtApelido, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(panelRound7Layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(cbxDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(panelRound7Layout.createSequentialGroup()
+                                                .addGap(17, 17, 17)
+                                                .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel6)
+                                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                                .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(imageAvatar1, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                                    .addComponent(kButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(27, 27, 27))))
         );
         panelRound7Layout.setVerticalGroup(
             panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound7Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel14))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(26, 26, 26)
+                .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel13))
+                .addGap(0, 0, 0)
+                .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRound7Layout.createSequentialGroup()
+                        .addComponent(imageAvatar1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelRound7Layout.createSequentialGroup()
                         .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                            .addComponent(jTextField6))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel12)
+                            .addComponent(txtPrimeiroNome)
+                            .addComponent(cbxDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel6))
+                        .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelRound7Layout.createSequentialGroup()
+                                .addComponent(txtApelido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(16, 16, 16)
+                                .addComponent(jLabel11)
+                                .addGap(0, 0, 0)
+                                .addComponent(txtBilheteIdentidade))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel11))
-                    .addComponent(imageAvatar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel5))
+                        .addGap(0, 0, 0)
+                        .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNuit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelRound7Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(kButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(17, 17, 17))
+                    .addGroup(panelRound7Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel8))
+                        .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbxSexo)
+                            .addComponent(cbxFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addComponent(Password)
+                        .addGap(1, 1, 1)
+                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ckLembrarPassword)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAlterarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(43, Short.MAX_VALUE))))
         );
 
         panelRound8.setBackground(new java.awt.Color(255, 255, 255));
@@ -297,38 +430,66 @@ public class MyProfilePanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void kButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton4ActionPerformed
+    private void btnAlterarPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarPasswordActionPerformed
         // TODO add your handling code here:
         DashboardAdmin dashboardAdmin= new DashboardAdmin();
         AlterarPassWordForm alterarform = new AlterarPassWordForm(dashboardAdmin, true);
         alterarform.setVisible(true);
-    }//GEN-LAST:event_kButton4ActionPerformed
+    }//GEN-LAST:event_btnAlterarPasswordActionPerformed
 
     private void kButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2ActionPerformed
         // TODO add your handling code here:
         adicionarImagen();
     }//GEN-LAST:event_kButton2ActionPerformed
 
+    private void txtNuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNuitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNuitActionPerformed
+
+    private void ckLembrarPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckLembrarPasswordActionPerformed
+
+        // O metedo isSelected verifica se o checkbox foi selecionado ou não
+        // Verificar se o checkbox foi selecionado,
+        // se tiver sido selecionado mostrar a senha caso não ocultar
+        if(ckLembrarPassword.isSelected()){
+            txtPassword.setEchoChar((char)0);
+        }else{
+           txtPassword.setEchoChar('*');
+        }
+    }//GEN-LAST:event_ckLembrarPasswordActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Password;
+    private com.k33ptoo.components.KButton btnAlterarPassword;
+    private com.k33ptoo.components.KButton btnEditar;
+    private com.k33ptoo.components.KButton btnSalvar;
+    private com.toedter.calendar.JDateChooser cbxDataNascimento;
+    private javax.swing.JComboBox<String> cbxFuncao;
+    private javax.swing.JComboBox<String> cbxSexo;
+    private javax.swing.JCheckBox ckLembrarPassword;
     private view.extras.PanelRound dashboardPanel;
     private view.extras.ImageAvatar imageAvatar1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private com.k33ptoo.components.KButton kButton1;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JScrollPane jScrollPane1;
     private com.k33ptoo.components.KButton kButton2;
-    private com.k33ptoo.components.KButton kButton3;
-    private com.k33ptoo.components.KButton kButton4;
     private view.extras.PanelRound panelRound7;
     private view.extras.PanelRound panelRound8;
+    private javax.swing.JTextField txtApelido;
+    private javax.swing.JTextField txtBilheteIdentidade;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextArea txtEndereco;
+    private javax.swing.JTextField txtNuit;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtPrimeiroNome;
     // End of variables declaration//GEN-END:variables
 }

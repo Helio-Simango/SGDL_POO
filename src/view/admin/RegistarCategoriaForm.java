@@ -4,12 +4,19 @@
  */
 package view.admin;
 
+import controllerDAO.CategoriaprodutoJpaController;
+import javax.swing.JOptionPane;
+import model.Categoriaproduto;
+
 /**
  *
  * @author helio
  */
 public class RegistarCategoriaForm extends javax.swing.JDialog {
 
+    private CategoriaprodutoJpaController categoriaDAO;
+    private ProdutosPanel produtosPanel;
+    
     /**
      * Creates new form RegistarCategoria
      */
@@ -17,11 +24,37 @@ public class RegistarCategoriaForm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        categoriaDAO = new CategoriaprodutoJpaController(connection.ConnectionFactory.getEmf());
     }
     
     private void limparCampos(){
         txtNomeCategoria.setText("");
         txtDescricaoCategoria.setText("");
+    }
+     
+    /**
+     *  O metedo recebe uma instancia do paneil produtosPanel
+     *  de modo a usar a o metedo para actualizar a a tabela de categoria
+     *  apos efectuar o registo.
+     */
+    public void setProdutoPanel(ProdutosPanel produtosPanel){
+        this.produtosPanel = produtosPanel;
+    }
+    
+    /**
+     * 
+     * @param categoria
+     * @return 
+     */
+    private boolean salvarCategoria(Categoriaproduto categoria){
+        try {
+            this.categoriaDAO.create(categoria);
+            JOptionPane.showMessageDialog(this, "Categoria cadastrada com sucesso!");
+            return true;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao cadastrar a categoria" +e.getMessage());
+            return false;
+        }
     }
 
     /**
@@ -40,13 +73,14 @@ public class RegistarCategoriaForm extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescricaoCategoria = new javax.swing.JTextArea();
         btnSalvar = new com.k33ptoo.components.KButton();
-        btnCancelar = new com.k33ptoo.components.KButton();
         jLabel3 = new javax.swing.JLabel();
+        btnCancelar1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         backgraundCategoria.setBackground(new java.awt.Color(255, 255, 255));
 
+        txtNomeCategoria.setForeground(new java.awt.Color(102, 102, 102));
         txtNomeCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
         txtNomeCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,12 +95,14 @@ public class RegistarCategoriaForm extends javax.swing.JDialog {
         jLabel2.setText("Descrição da Categoria");
 
         txtDescricaoCategoria.setColumns(20);
+        txtDescricaoCategoria.setForeground(new java.awt.Color(102, 102, 102));
         txtDescricaoCategoria.setLineWrap(true);
         txtDescricaoCategoria.setRows(5);
         txtDescricaoCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 202, 202)));
         jScrollPane1.setViewportView(txtDescricaoCategoria);
 
         btnSalvar.setText("Salvar");
+        btnSalvar.setkBorderRadius(30);
         btnSalvar.setkEndColor(new java.awt.Color(106, 192, 106));
         btnSalvar.setkStartColor(new java.awt.Color(106, 192, 106));
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -75,18 +111,19 @@ public class RegistarCategoriaForm extends javax.swing.JDialog {
             }
         });
 
-        btnCancelar.setText("Cancelar");
-        btnCancelar.setkEndColor(new java.awt.Color(255, 51, 102));
-        btnCancelar.setkStartColor(new java.awt.Color(255, 51, 102));
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
-
         jLabel3.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(125, 121, 121));
         jLabel3.setText("Registar Categoria");
+
+        btnCancelar1.setForeground(new java.awt.Color(102, 102, 102));
+        btnCancelar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/icons_back.png"))); // NOI18N
+        btnCancelar1.setText("Cancelar");
+        btnCancelar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCancelar1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout backgraundCategoriaLayout = new javax.swing.GroupLayout(backgraundCategoria);
         backgraundCategoria.setLayout(backgraundCategoriaLayout);
@@ -95,27 +132,29 @@ public class RegistarCategoriaForm extends javax.swing.JDialog {
             .addGroup(backgraundCategoriaLayout.createSequentialGroup()
                 .addGroup(backgraundCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(backgraundCategoriaLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelar1))
+                    .addGroup(backgraundCategoriaLayout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(jLabel3))
+                    .addGroup(backgraundCategoriaLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
                         .addGroup(backgraundCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(backgraundCategoriaLayout.createSequentialGroup()
-                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)
-                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jScrollPane1)
-                            .addComponent(txtNomeCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(backgraundCategoriaLayout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(jLabel3)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                            .addComponent(txtNomeCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                            .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         backgraundCategoriaLayout.setVerticalGroup(
             backgraundCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(backgraundCategoriaLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgraundCategoriaLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(btnCancelar1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNomeCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -123,11 +162,9 @@ public class RegistarCategoriaForm extends javax.swing.JDialog {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(backgraundCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,20 +175,11 @@ public class RegistarCategoriaForm extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(backgraundCategoria, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(backgraundCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
-        if(txtNomeCategoria.getText().equals("") && txtDescricaoCategoria.getText().equals("")){
-            this.dispose();
-        } else{
-            limparCampos();
-        }    
-    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void txtNomeCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeCategoriaActionPerformed
         // TODO add your handling code here:
@@ -166,11 +194,26 @@ public class RegistarCategoriaForm extends javax.swing.JDialog {
            if(txtDescricaoCategoria.getText().equals("")){
                  System.out.println("Preencha o campo descriacao da categoria!!");
             } else {
-                limparCampos();
+                Categoriaproduto categoria = new Categoriaproduto();
+                categoria.setCategoria(txtNomeCategoria.getText());
+                categoria.setDescricao(txtDescricaoCategoria.getText());
+                this.salvarCategoria(categoria);
                 System.out.println("Categoria registada com sucesso!!");
+                // a usaro metdo da classe produtosPanel, da inicializacao
+                // da instancia recebida por parametro!
+                this.produtosPanel.preencherTabelaCategoria();
+                limparCampos();
             }
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnCancelar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelar1MouseClicked
+         if(txtNomeCategoria.getText().equals("") && txtDescricaoCategoria.getText().equals("")){
+            this.dispose();
+        } else{
+            limparCampos();
+        }  
+    }//GEN-LAST:event_btnCancelar1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -217,7 +260,7 @@ public class RegistarCategoriaForm extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgraundCategoria;
-    private com.k33ptoo.components.KButton btnCancelar;
+    private javax.swing.JLabel btnCancelar1;
     private com.k33ptoo.components.KButton btnSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

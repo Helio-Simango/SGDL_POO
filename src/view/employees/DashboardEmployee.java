@@ -4,6 +4,7 @@
  */
 package view.employees;
 
+import controller.ModeloEmpregado;
 import view.admin.*;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -26,6 +27,14 @@ public class DashboardEmployee extends javax.swing.JFrame implements MouseListen
         initComponents();
     }
 
+    
+    // expero que funcione!!
+    public void exportarDados(ModeloEmpregado model){
+        lblPrimeiroNome.setText(model.getPrimeiroNome());
+        lblFuncao.setText(model.getFuncao());
+        
+    }
+    
     /**
      * Mostra o Painel recebido por parametro no frame usando o cardlayout.
      *
@@ -73,10 +82,10 @@ public class DashboardEmployee extends javax.swing.JFrame implements MouseListen
         lblCompanyName = new javax.swing.JLabel();
         headerPanel = new view.extras.PanelRound();
         userProfilePanel = new view.extras.PanelRound();
-        lblUserName = new javax.swing.JLabel();
-        lblCarga = new javax.swing.JLabel();
+        lblPrimeiroNome = new javax.swing.JLabel();
+        lblFuncao = new javax.swing.JLabel();
         UserImagePanel = new view.extras.PanelRound();
-        btnUserSettings = new view.extras.PanelRound();
+        btnMeuPerfil = new view.extras.PanelRound();
         jLabel21 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         panelRound6 = new view.extras.PanelRound();
@@ -482,11 +491,11 @@ public class DashboardEmployee extends javax.swing.JFrame implements MouseListen
         userProfilePanel.setRoundTopLeft(60);
         userProfilePanel.setRoundTopRight(60);
 
-        lblUserName.setText("Kirov Mabasso");
+        lblPrimeiroNome.setText("Kirov Mabasso");
 
-        lblCarga.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        lblCarga.setForeground(new java.awt.Color(204, 204, 204));
-        lblCarga.setText("Vendedor");
+        lblFuncao.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        lblFuncao.setForeground(new java.awt.Color(204, 204, 204));
+        lblFuncao.setText("Vendedor");
 
         UserImagePanel.setBackground(new java.awt.Color(245, 235, 246));
         UserImagePanel.setRoundBottomLeft(60);
@@ -505,20 +514,20 @@ public class DashboardEmployee extends javax.swing.JFrame implements MouseListen
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        btnUserSettings.setBackground(new java.awt.Color(255, 255, 255));
-        btnUserSettings.setRoundBottomLeft(40);
-        btnUserSettings.setRoundBottomRight(40);
-        btnUserSettings.setRoundTopLeft(40);
-        btnUserSettings.setRoundTopRight(40);
-        btnUserSettings.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnMeuPerfil.setBackground(new java.awt.Color(255, 255, 255));
+        btnMeuPerfil.setRoundBottomLeft(40);
+        btnMeuPerfil.setRoundBottomRight(40);
+        btnMeuPerfil.setRoundTopLeft(40);
+        btnMeuPerfil.setRoundTopRight(40);
+        btnMeuPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnUserSettingsMouseClicked(evt);
+                btnMeuPerfilMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnUserSettingsMouseEntered(evt);
+                btnMeuPerfilMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnUserSettingsMouseExited(evt);
+                btnMeuPerfilMouseExited(evt);
             }
         });
 
@@ -526,17 +535,17 @@ public class DashboardEmployee extends javax.swing.JFrame implements MouseListen
         jLabel21.setMaximumSize(new java.awt.Dimension(20, 20));
         jLabel21.setPreferredSize(new java.awt.Dimension(10, 20));
 
-        javax.swing.GroupLayout btnUserSettingsLayout = new javax.swing.GroupLayout(btnUserSettings);
-        btnUserSettings.setLayout(btnUserSettingsLayout);
-        btnUserSettingsLayout.setHorizontalGroup(
-            btnUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnUserSettingsLayout.createSequentialGroup()
+        javax.swing.GroupLayout btnMeuPerfilLayout = new javax.swing.GroupLayout(btnMeuPerfil);
+        btnMeuPerfil.setLayout(btnMeuPerfilLayout);
+        btnMeuPerfilLayout.setHorizontalGroup(
+            btnMeuPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnMeuPerfilLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
-        btnUserSettingsLayout.setVerticalGroup(
-            btnUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        btnMeuPerfilLayout.setVerticalGroup(
+            btnMeuPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -549,10 +558,10 @@ public class DashboardEmployee extends javax.swing.JFrame implements MouseListen
                 .addComponent(UserImagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(userProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-                    .addComponent(lblCarga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblPrimeiroNome, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                    .addComponent(lblFuncao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnUserSettings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMeuPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
         userProfilePanelLayout.setVerticalGroup(
@@ -565,10 +574,10 @@ public class DashboardEmployee extends javax.swing.JFrame implements MouseListen
                         .addGroup(userProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(UserImagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(userProfilePanelLayout.createSequentialGroup()
-                                .addComponent(lblUserName)
+                                .addComponent(lblPrimeiroNome)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblCarga))))
-                    .addComponent(btnUserSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(lblFuncao))))
+                    .addComponent(btnMeuPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1222,20 +1231,20 @@ public class DashboardEmployee extends javax.swing.JFrame implements MouseListen
         showPanel(dashboardPanel);
     }//GEN-LAST:event_btnDashboardMouseClicked
 
-    private void btnUserSettingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserSettingsMouseClicked
+    private void btnMeuPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMeuPerfilMouseClicked
         // TODO add your handling code here:
         showPanel(new MyProfilePanel());
-    }//GEN-LAST:event_btnUserSettingsMouseClicked
+    }//GEN-LAST:event_btnMeuPerfilMouseClicked
 
-    private void btnUserSettingsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserSettingsMouseEntered
+    private void btnMeuPerfilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMeuPerfilMouseEntered
         // TODO add your handling code here:
-        btnUserSettings.setBackground(new java.awt.Color(153, 153, 153));
-    }//GEN-LAST:event_btnUserSettingsMouseEntered
+        btnMeuPerfil.setBackground(new java.awt.Color(153, 153, 153));
+    }//GEN-LAST:event_btnMeuPerfilMouseEntered
 
-    private void btnUserSettingsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserSettingsMouseExited
+    private void btnMeuPerfilMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMeuPerfilMouseExited
         // TODO add your handling code here:
-        btnUserSettings.setBackground(new Color(255, 255, 255));
-    }//GEN-LAST:event_btnUserSettingsMouseExited
+        btnMeuPerfil.setBackground(new Color(255, 255, 255));
+    }//GEN-LAST:event_btnMeuPerfilMouseExited
 
     private void btnEncomendasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEncomendasMouseEntered
         // TODO add your handling code here:
@@ -1447,8 +1456,8 @@ public class DashboardEmployee extends javax.swing.JFrame implements MouseListen
     private view.extras.PanelRound btnDashboard;
     private view.extras.PanelRound btnEncomendas;
     private view.extras.PanelRound btnLogout;
+    private view.extras.PanelRound btnMeuPerfil;
     private view.extras.PanelRound btnProdutos;
-    private view.extras.PanelRound btnUserSettings;
     private view.extras.PanelRound btnVendas;
     private view.extras.PanelRound cardTotakEcomendas;
     private view.extras.PanelRound cardTotalClientes;
@@ -1489,12 +1498,12 @@ public class DashboardEmployee extends javax.swing.JFrame implements MouseListen
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblCarga;
     private javax.swing.JLabel lblCompanyName;
     private javax.swing.JLabel lblEsqueceuPassword;
+    private javax.swing.JLabel lblFuncao;
+    private javax.swing.JLabel lblPrimeiroNome;
     private javax.swing.JLabel lblSearch;
     private javax.swing.JLabel lblUltimos30dias;
-    private javax.swing.JLabel lblUserName;
     private javax.swing.JLabel lblVerClientes;
     private javax.swing.JLabel lblVerEncomendas;
     private javax.swing.JLabel lblVerProdutos;

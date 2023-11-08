@@ -66,6 +66,12 @@ public class Produto implements Serializable {
     @Column(name = "dataValidadeProduto")
     @Temporal(TemporalType.DATE)
     private Date dataValidadeProduto;
+    @Column(name ="Estado")
+    private String estado;
+    @Column(name = "Descricao")
+    private String descricao;
+    @Column(name = "Categoria")
+    private String categoria;
     @JoinColumn(name = "fkItemCardapio", referencedColumnName = "idItemCardapio")
     @ManyToOne
     private Itemcardapio fkItemCardapio;
@@ -150,6 +156,32 @@ public class Produto implements Serializable {
     public void setDataValidadeProduto(Date dataValidadeProduto) {
         this.dataValidadeProduto = dataValidadeProduto;
     }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+    
+    
 
     public Itemcardapio getFkItemCardapio() {
         return fkItemCardapio;

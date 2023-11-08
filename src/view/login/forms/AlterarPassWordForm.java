@@ -81,6 +81,7 @@ public class AlterarPassWordForm extends javax.swing.JDialog {
         });
 
         kButton1.setText("Alterar a pass-word");
+        kButton1.setkBorderRadius(30);
         kButton1.setkEndColor(new java.awt.Color(106, 192, 106));
         kButton1.setkStartColor(new java.awt.Color(106, 192, 106));
 

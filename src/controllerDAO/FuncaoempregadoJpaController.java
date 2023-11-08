@@ -186,5 +186,8 @@ public class FuncaoempregadoJpaController implements Serializable {
             em.close();
         }
     }
+    public void funcionarioEstado(){
+        
+    }
     
 }

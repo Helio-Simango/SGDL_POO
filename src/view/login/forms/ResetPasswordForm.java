@@ -177,6 +177,7 @@ public class ResetPasswordForm extends javax.swing.JDialog implements KeyListene
         VerifictionCodePanel.setBackground(new java.awt.Color(255, 255, 255));
 
         btnContinuarCodigo.setText("Continuar");
+        btnContinuarCodigo.setkBorderRadius(30);
         btnContinuarCodigo.setkEndColor(new java.awt.Color(106, 192, 106));
         btnContinuarCodigo.setkHoverEndColor(new java.awt.Color(51, 51, 51));
         btnContinuarCodigo.setkHoverForeGround(new java.awt.Color(255, 255, 255));
@@ -213,6 +214,7 @@ public class ResetPasswordForm extends javax.swing.JDialog implements KeyListene
         jLabel3.setText("Introduza o Email da conta a recuperar a senha");
 
         btnCodigoVerificacao.setText("enviar código de verificação");
+        btnCodigoVerificacao.setkBorderRadius(30);
         btnCodigoVerificacao.setkEndColor(new java.awt.Color(44, 44, 57));
         btnCodigoVerificacao.setkHoverEndColor(new java.awt.Color(51, 51, 51));
         btnCodigoVerificacao.setkHoverForeGround(new java.awt.Color(255, 255, 255));
@@ -231,33 +233,34 @@ public class ResetPasswordForm extends javax.swing.JDialog implements KeyListene
             .addGroup(VerifictionCodePanelLayout.createSequentialGroup()
                 .addGroup(VerifictionCodePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(VerifictionCodePanelLayout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addGroup(VerifictionCodePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnCodigoVerificacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnContinuarCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                            .addComponent(txtEmailCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)))
+                        .addGap(81, 81, 81)
+                        .addComponent(jLabel3))
                     .addGroup(VerifictionCodePanelLayout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(jLabel1))
-                    .addGroup(VerifictionCodePanelLayout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(jLabel3)))
-                .addContainerGap(93, Short.MAX_VALUE))
+                        .addGap(44, 44, 44)
+                        .addGroup(VerifictionCodePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtEmailCodigo, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCodigoVerificacao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnContinuarCodigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(47, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VerifictionCodePanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(124, 124, 124))
         );
         VerifictionCodePanelLayout.setVerticalGroup(
             VerifictionCodePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(VerifictionCodePanelLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(38, 38, 38)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jLabel3)
-                .addGap(46, 46, 46)
+                .addGap(37, 37, 37)
                 .addComponent(txtEmailCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCodigoVerificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(btnContinuarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
 
         containerPanel.add(VerifictionCodePanel, "card2");
@@ -332,6 +335,7 @@ public class ResetPasswordForm extends javax.swing.JDialog implements KeyListene
         jLabel4.setText("Introduza o codigo de verificação enviado por email");
 
         btnRecuperarSenha.setText("Continuar");
+        btnRecuperarSenha.setkBorderRadius(30);
         btnRecuperarSenha.setkEndColor(new java.awt.Color(106, 192, 106));
         btnRecuperarSenha.setkHoverEndColor(new java.awt.Color(51, 51, 51));
         btnRecuperarSenha.setkHoverForeGround(new java.awt.Color(255, 255, 255));
@@ -348,43 +352,42 @@ public class ResetPasswordForm extends javax.swing.JDialog implements KeyListene
         resetPasswordPanelLayout.setHorizontalGroup(
             resetPasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(resetPasswordPanelLayout.createSequentialGroup()
-                .addGap(82, 82, 82)
+                .addContainerGap(45, Short.MAX_VALUE)
                 .addGroup(resetPasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(resetPasswordPanelLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, resetPasswordPanelLayout.createSequentialGroup()
+                        .addGroup(resetPasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ckLembrarPassword)
+                            .addComponent(txtConfirmarNewPassWord, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtNewPassWord, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnRecuperarSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                            .addComponent(txtCodigoVerificacao, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(39, 39, 39))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, resetPasswordPanelLayout.createSequentialGroup()
                         .addGroup(resetPasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addComponent(ckLembrarPassword)
-                            .addComponent(txtNewPassWord, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCodigoVerificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(86, Short.MAX_VALUE))
-                    .addGroup(resetPasswordPanelLayout.createSequentialGroup()
-                        .addGroup(resetPasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtConfirmarNewPassWord)
-                            .addComponent(btnRecuperarSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(resetPasswordPanelLayout.createSequentialGroup()
-                .addGap(137, 137, 137)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, resetPasswordPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(65, 65, 65)))
+                        .addGap(65, 65, 65))))
         );
         resetPasswordPanelLayout.setVerticalGroup(
             resetPasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(resetPasswordPanelLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addGap(25, 25, 25)
+                .addGap(48, 48, 48)
                 .addComponent(txtCodigoVerificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(txtNewPassWord, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
                 .addComponent(txtConfirmarNewPassWord, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ckLembrarPassword)
-                .addGap(18, 18, 18)
+                .addGap(33, 33, 33)
                 .addComponent(btnRecuperarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         containerPanel.add(resetPasswordPanel, "card3");

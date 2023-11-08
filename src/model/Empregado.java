@@ -77,6 +77,8 @@ public class Empregado implements Serializable {
     private String enderecoResidencia;
     @Column(name = "funcao")
     private String funcao;
+    @Column(name = "nivelDeAcesso")
+    private Integer nivelDeAcesso;
     @Column(name = "Nuit")
     private String nuit;
     @Column(name = "BilheteIdentidade")
@@ -193,6 +195,14 @@ public class Empregado implements Serializable {
 
     public void setFuncao(String funcao) {
         this.funcao = funcao;
+    }
+
+    public Integer getNivelDeAcesso() {
+        return nivelDeAcesso;
+    }
+
+    public void setNivelDeAcesso(Integer nivelDeAcesso) {
+        this.nivelDeAcesso = nivelDeAcesso;
     }
     
     public Funcaoempregado getFkFuncaoEmpregado() {

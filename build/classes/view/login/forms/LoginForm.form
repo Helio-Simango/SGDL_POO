@@ -152,7 +152,7 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="ckLembrarPassword" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="tbnIniciarSessaao" alignment="0" pref="280" max="32767" attributes="0"/>
+                                              <Component id="btnIniciarSessaao" alignment="0" pref="280" max="32767" attributes="0"/>
                                               <Component id="txtPassWordLogin" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                           <Component id="txtEmailLogin" min="-2" pref="280" max="-2" attributes="0"/>
@@ -181,7 +181,7 @@
                               <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                               <Component id="ckLembrarPassword" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="tbnIniciarSessaao" min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="btnIniciarSessaao" min="-2" pref="33" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnEsqueceuPassword" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="44" max="32767" attributes="0"/>
@@ -226,9 +226,10 @@
                         <Property name="text" type="java.lang.String" value="Inicie a sess&#xe3;o na sua conta"/>
                       </Properties>
                     </Component>
-                    <Component class="com.k33ptoo.components.KButton" name="tbnIniciarSessaao">
+                    <Component class="com.k33ptoo.components.KButton" name="btnIniciarSessaao">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Iniciar a Sess&#xe3;o"/>
+                        <Property name="kBorderRadius" type="int" value="30"/>
                         <Property name="kEndColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="39" green="2c" red="2c" type="rgb"/>
                         </Property>
@@ -246,7 +247,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tbnIniciarSessaaoActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIniciarSessaaoActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JPasswordField" name="txtPassWordLogin">
@@ -666,22 +667,15 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="lblLoginImage" min="-2" pref="525" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
+                  <EmptySpace min="0" pref="525" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblLoginImage" alignment="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblLoginImage">
-            </Component>
-          </SubComponents>
         </Container>
       </SubComponents>
     </Container>

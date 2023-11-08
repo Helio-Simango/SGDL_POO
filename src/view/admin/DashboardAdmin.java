@@ -4,25 +4,50 @@
  */
 package view.admin;
 
+import controller.ModeloEmpregado;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JPanel;
+import model.Empregado;
 import view.geral.SobreNosPanel;
 import view.login.forms.LoginForm;
-
 
 /**
  *
  * @author helio
  */
-public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
+public class DashboardAdmin extends javax.swing.JFrame implements MouseListener {
+
+    private Empregado empregado;
+    private String userName;
+    private String djob;
 
     /**
      * Creates new form DashboardAdmin
      */
     public DashboardAdmin() {
         initComponents();
+        this.empregado = new Empregado();
+    }
+
+    // expero que funcione!!
+    public void exportarDados(ModeloEmpregado model) {
+        lblPrimeiroNome.setText(model.getPrimeiroNome());
+        lblFuncao.setText(model.getFuncao());
+
+    }
+
+    /*
+    * O metedo recebe um Objecto do tipo empregado
+    * Da classe em que for invocado.
+     */
+    public void recebeEmpregado(Empregado emp) {
+        this.empregado = emp;
+        System.out.println(emp.getPrimeiroNome());
+        System.out.println(emp.getFuncao());
+        lblPrimeiroNome.setText(emp.getPrimeiroNome());
+        lblFuncao.setText(emp.getFuncao());
     }
 
     /**
@@ -36,17 +61,16 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
         containerPanel.revalidate();
         containerPanel.add(panel);
     }
-    
-    private void setColarBackGraund(JPanel menuBotton){
-        btnProdutos.setBackground(new Color(44,44,57));
-        btnEncomendas.setBackground(new Color(44,44,57));
-        btnVendas.setBackground(new Color(44,44,57));
-        btnClientes.setBackground(new Color(44,44,57));
-        btnFuncionario.setBackground(new Color(44,44,57));
-        btnRelatorio.setBackground(new Color(44,44,57));
-        menuBotton.setBackground(Color.red);   
+
+    private void setColarBackGraund(JPanel menuBotton) {
+        btnProdutos.setBackground(new Color(44, 44, 57));
+        btnEncomendas.setBackground(new Color(44, 44, 57));
+        btnVendas.setBackground(new Color(44, 44, 57));
+        btnClientes.setBackground(new Color(44, 44, 57));
+        btnFuncionario.setBackground(new Color(44, 44, 57));
+        btnRelatorio.setBackground(new Color(44, 44, 57));
+        menuBotton.setBackground(Color.red);
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -88,8 +112,8 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
         jLabel13 = new javax.swing.JLabel();
         headerPanel = new view.extras.PanelRound();
         userProfilePanel = new view.extras.PanelRound();
-        lblUserName = new javax.swing.JLabel();
-        lblCarga = new javax.swing.JLabel();
+        lblPrimeiroNome = new javax.swing.JLabel();
+        lblFuncao = new javax.swing.JLabel();
         UserImagePanel = new view.extras.PanelRound();
         btnUserSettings = new view.extras.PanelRound();
         jLabel21 = new javax.swing.JLabel();
@@ -596,11 +620,13 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
         userProfilePanel.setRoundTopLeft(60);
         userProfilePanel.setRoundTopRight(60);
 
-        lblUserName.setText("Hélio Simango");
+        lblPrimeiroNome.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblPrimeiroNome.setForeground(new java.awt.Color(125, 121, 121));
+        lblPrimeiroNome.setText("Hélio Simango");
 
-        lblCarga.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        lblCarga.setForeground(new java.awt.Color(204, 204, 204));
-        lblCarga.setText("Super Admin");
+        lblFuncao.setFont(new java.awt.Font("Segoe UI Emoji", 1, 12)); // NOI18N
+        lblFuncao.setForeground(new java.awt.Color(204, 204, 204));
+        lblFuncao.setText("Super Admin");
 
         UserImagePanel.setBackground(new java.awt.Color(245, 235, 246));
         UserImagePanel.setRoundBottomLeft(60);
@@ -663,8 +689,8 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
                 .addComponent(UserImagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(userProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-                    .addComponent(lblCarga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblPrimeiroNome, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnUserSettings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
@@ -674,14 +700,11 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userProfilePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(userProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(userProfilePanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(userProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(UserImagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(userProfilePanelLayout.createSequentialGroup()
-                                .addComponent(lblUserName)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblCarga))))
+                    .addComponent(UserImagePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, userProfilePanelLayout.createSequentialGroup()
+                        .addComponent(lblPrimeiroNome)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblFuncao))
                     .addComponent(btnUserSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1327,10 +1350,10 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt){                                          
-        
-    }                                          
-    
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {
+
+    }
+
     private void btnDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDashboardMouseClicked
         // TODO add your handling code here:
         showPanel(dashboardPanel);
@@ -1388,7 +1411,7 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
 
     private void btnClientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMouseEntered
         // TODO add your handling code here:
-         btnClientes.setBackground(new Color(84, 84, 104));
+        btnClientes.setBackground(new Color(84, 84, 104));
     }//GEN-LAST:event_btnClientesMouseEntered
 
     private void btnClientesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMouseExited
@@ -1403,7 +1426,7 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
 
     private void btnFuncionarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFuncionarioMouseExited
         // TODO add your handling code here:
-         btnFuncionario.setBackground(new java.awt.Color(44, 44, 57));
+        btnFuncionario.setBackground(new java.awt.Color(44, 44, 57));
     }//GEN-LAST:event_btnFuncionarioMouseExited
 
     private void btnRelatorioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRelatorioMouseEntered
@@ -1418,7 +1441,7 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
 
     private void btnLogoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogoutMouseEntered
         // TODO add your handling code here:
-        btnLogout.setBackground(new Color(215,76,104));
+        btnLogout.setBackground(new Color(215, 76, 104));
     }//GEN-LAST:event_btnLogoutMouseEntered
 
     private void btnLogoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogoutMouseExited
@@ -1459,20 +1482,20 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
 
     private void lblVerProdutosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVerProdutosMouseEntered
         // TODO add your handling code here:
-       lblVerProdutos.setText("<html><u>Ver Produtos</u></html>");
-       cardTotalProdutos.setBackground(new Color(245,235,246));
+        lblVerProdutos.setText("<html><u>Ver Produtos</u></html>");
+        cardTotalProdutos.setBackground(new Color(245, 235, 246));
     }//GEN-LAST:event_lblVerProdutosMouseEntered
 
     private void lblVerProdutosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVerProdutosMouseExited
         // TODO add your handling code here:
         lblVerProdutos.setText("Ver Produtos");
-         cardTotalProdutos.setBackground(Color.WHITE);
+        cardTotalProdutos.setBackground(Color.WHITE);
     }//GEN-LAST:event_lblVerProdutosMouseExited
 
     private void lblVerEncomendasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVerEncomendasMouseEntered
         // TODO add your handling code here:
         lblVerEncomendas.setText("<html><u>Ver Encomendas</u><html>");
-         cardTotakEcomendas.setBackground(new Color(245,235,246));
+        cardTotakEcomendas.setBackground(new Color(245, 235, 246));
     }//GEN-LAST:event_lblVerEncomendasMouseEntered
 
     private void lblVerEncomendasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVerEncomendasMouseExited
@@ -1484,7 +1507,7 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
     private void lblVerVendasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVerVendasMouseEntered
         // TODO add your handling code here:
         lblVerVendas.setText("<html><u>Ver Vendas</u><html>");
-        cardTotalVenas.setBackground(new Color(245,235,246));
+        cardTotalVenas.setBackground(new Color(245, 235, 246));
     }//GEN-LAST:event_lblVerVendasMouseEntered
 
     private void lblVerVendasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVerVendasMouseExited
@@ -1496,7 +1519,7 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
     private void lblVerClientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVerClientesMouseEntered
         // TODO add your handling code here:
         lblVerClientes.setText("<html><u>Ver Clientes</u></html>");
-         cardTotalClientes.setBackground(new Color(245,235,246));
+        cardTotalClientes.setBackground(new Color(245, 235, 246));
     }//GEN-LAST:event_lblVerClientesMouseEntered
 
     private void lblVerClientesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVerClientesMouseExited
@@ -1513,7 +1536,7 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
 
     private void btnProdutosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProdutosMousePressed
         // TODO add your handling code here:
-        if(evt.getSource() == btnProdutos){
+        if (evt.getSource() == btnProdutos) {
             System.out.println("Botao presionado!!");
         }
     }//GEN-LAST:event_btnProdutosMousePressed
@@ -1530,7 +1553,7 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
 
     private void lblVerEncomendasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVerEncomendasMouseClicked
         // TODO add your handling code here:
-        showPanel(new  EncomendasPanel());
+        showPanel(new EncomendasPanel());
     }//GEN-LAST:event_lblVerEncomendasMouseClicked
 
     private void btnAboutUsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAboutUsMouseClicked
@@ -1538,15 +1561,14 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
         showPanel(new SobreNosPanel());
     }//GEN-LAST:event_btnAboutUsMouseClicked
 
-    private void cardTotalProdutosMouseEntered(java.awt.event.MouseEvent evt) {                                               
+    private void cardTotalProdutosMouseEntered(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
-    }                                                                                      
+    }
 
-    private void cardTotalProdutosMouseExited(java.awt.event.MouseEvent evt) {                                              
+    private void cardTotalProdutosMouseExited(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
-    }                                                                                  
-                                              
-   
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -1638,12 +1660,12 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblCarga;
     private javax.swing.JLabel lblCompanyName;
     private javax.swing.JLabel lblEsqueceuPassword;
+    private javax.swing.JLabel lblFuncao;
+    private javax.swing.JLabel lblPrimeiroNome;
     private javax.swing.JLabel lblSearch;
     private javax.swing.JLabel lblUltimos30dias;
-    private javax.swing.JLabel lblUserName;
     private javax.swing.JLabel lblVerClientes;
     private javax.swing.JLabel lblVerEncomendas;
     private javax.swing.JLabel lblVerProdutos;
@@ -1668,9 +1690,9 @@ public class DashboardAdmin extends javax.swing.JFrame implements MouseListener{
 
     @Override
     public void mousePressed(MouseEvent e) {
-      
+
     }
-    
+
     @Override
     public void mouseReleased(MouseEvent e) {
     }

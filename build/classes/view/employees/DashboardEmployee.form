@@ -629,11 +629,11 @@
                           <Component id="UserImagePanel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblUserName" pref="119" max="32767" attributes="0"/>
-                              <Component id="lblCarga" max="32767" attributes="0"/>
+                              <Component id="lblPrimeiroNome" pref="119" max="32767" attributes="0"/>
+                              <Component id="lblFuncao" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btnUserSettings" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnMeuPerfil" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -648,13 +648,13 @@
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="UserImagePanel" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
-                                          <Component id="lblUserName" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblPrimeiroNome" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="lblCarga" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblFuncao" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <Component id="btnUserSettings" alignment="1" max="32767" attributes="0"/>
+                              <Component id="btnMeuPerfil" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -662,12 +662,12 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="lblUserName">
+                <Component class="javax.swing.JLabel" name="lblPrimeiroNome">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Kirov Mabasso"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblCarga">
+                <Component class="javax.swing.JLabel" name="lblFuncao">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI Emoji" size="12" style="0"/>
@@ -702,7 +702,7 @@
                     </DimensionLayout>
                   </Layout>
                 </Container>
-                <Container class="view.extras.PanelRound" name="btnUserSettings">
+                <Container class="view.extras.PanelRound" name="btnMeuPerfil">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -713,9 +713,9 @@
                     <Property name="roundTopRight" type="int" value="40"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnUserSettingsMouseClicked"/>
-                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnUserSettingsMouseEntered"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnUserSettingsMouseExited"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnMeuPerfilMouseClicked"/>
+                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnMeuPerfilMouseEntered"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnMeuPerfilMouseExited"/>
                   </Events>
 
                   <Layout>
